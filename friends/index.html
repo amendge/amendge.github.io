@@ -1,0 +1,2707 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="keywords" content="Gridea静态个人博客">
+<meta name="description" content="温故而知新">
+<meta name="theme-color" content="#000">
+<title>Amend</title>
+<link rel="shortcut icon" href="/favicon.ico?v=1617868286829">
+<link rel="stylesheet" href="/media/css/mist.css">
+<link rel="stylesheet" href="/media/fonts/font-awesome.css">
+<link
+  href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Rosario:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext"
+  rel="stylesheet" type="text/css">
+
+<link href="/media/hljs/styles/default.css"
+  rel="stylesheet">
+
+<link rel="stylesheet" href="/styles/main.css">
+
+<script src="/media/hljs/highlight.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.0/velocity.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.0/velocity.ui.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"
+  integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"
+  integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"
+  integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+  onload="renderMathInElement(document.body);"></script>
+
+
+
+
+
+</head>
+
+<body>
+  <div class="head-top-line"></div>
+  <div class="header-box">
+    
+<div class="mist">
+  <header class="header bg-color ">
+    <div class="blog-header box-shadow-wrapper  " id="header">
+      <div class="nav-toggle" id="nav_toggle">
+        <div class="toggle-box">
+          <div class="line line-top"></div>
+          <div class="line line-center"></div>
+          <div class="line line-bottom"></div>
+        </div>
+      </div>
+      <div class="site-meta">       
+        <div class="site-title">
+          
+            <a href="/" class="">
+              <span class="logo-line-before">
+                <i class=""></i>
+              </span>
+              <span class="main-title">Amend</span>
+              <span class="logo-line-after">
+                <i class=""></i>
+              </span>
+            </a>  
+          
+        </div>
+        
+      </div>
+      <nav class="site-nav" id="site_nav">
+        <ul id="nav_ul">
+          
+            
+            
+              
+            
+            <li class="nav-item ">
+              
+              
+                <a href="/" target="_self">
+                  <i class="fa fa-home"></i> 首页
+                </a>
+              
+            </li>
+          
+            
+            
+              
+            
+            <li class="nav-item ">
+              
+              
+                <a href="/archives/" target="_self">
+                  <i class="fa fa-archive"></i> 归档
+                </a>
+              
+            </li>
+          
+            
+            
+              
+            
+            <li class="nav-item ">
+              
+              
+                <a href="/tags/" target="_self">
+                  <i class="fa fa-tags"></i> 标签
+                </a>
+              
+            </li>
+          
+            
+            
+              
+            
+            <li class="nav-item ">
+              
+              
+                <a href="/post/about/" target="_self">
+                  <i class="fa fa-user"></i> 关于
+                </a>
+              
+            </li>
+          
+          
+            
+              <li class="nav-item ">
+                <a href="/friends/" target="_self">
+                  
+                    <i class="fa fa-address-book"></i> 友情链接
+                  
+                </a>
+              </li>
+            
+          
+          
+            <li id="fa_search" class="nav-item">
+              <a href="javascript:void(0);">
+                <i class="fa fa-search"></i> <span class="language" data-lan="search">搜索</span>
+              </a>
+            </li>
+          
+        </ul>
+      </nav>
+    </div>
+  </header>
+</div>
+
+<script type="text/javascript"> 
+ 
+  let showNav = true;
+
+  let navToggle = document.querySelector('#nav_toggle'),
+  siteNav = document.querySelector('#site_nav');
+  
+  function navClick() {
+    let sideBar = document.querySelector('.sidebar');
+    let navUl = document.querySelector('#nav_ul');
+    navToggle.classList.toggle('nav-toggle-active');
+    siteNav.classList.toggle('nav-menu-active');
+    if (siteNav.classList.contains('nav-menu-active')) {
+      siteNav.style = "height: " + (navUl.children.length * 42) +"px !important";
+    } else {
+      siteNav.style = "";
+    }
+  }
+
+  navToggle.addEventListener('click',navClick);  
+</script>
+  </div>
+  <div class="main-continer">
+    
+    <div
+      class="section-layout mist bg-color">
+      <div class="section-layout-wrapper">
+        <div id="sidebarMeta" class="sidebar">
+    
+<div class="sidebar-wrapper box-shadow-wrapper ">
+  <div class="sidebar-item">
+    <img class="site-author-image right-motion" src="/images/avatar.png"/>
+    <p class="site-author-name">记录技术钻研的过程和结果分享、也希望可以帮助自己作为笔记记录</p>
+    
+    <div class="site-description right-motion">
+      
+      
+      
+        <p>一个普普通通的运维er</p>
+      
+      
+    </div>
+    
+  </div>
+  <div class="sidebar-item side-item-stat right-motion">
+    <div class="sidebar-item-box">
+      <a href="/archives/">
+        
+        <span class="site-item-stat-count">7</span>
+        <span class="site-item-stat-name language" data-lan="article">文章</span>
+      </a>
+    </div>
+    <div class="sidebar-item-box">
+      <a href="">
+        <span class="site-item-stat-count">1</span>
+        <span class="site-item-stat-name language" data-lan="category">分类</span>
+      </a>
+    </div>
+    <div class="sidebar-item-box">
+      <a href="/tags/">
+        <span class="site-item-stat-count">1</span>
+        <span class="site-item-stat-name language" data-lan="tag">标签</span>
+      </a>
+    </div>
+  </div>
+  
+  
+
+
+
+</div>
+</div>
+<script>
+  let sidebarMeta = document.querySelector('#sidebarMeta');
+  let scheme = 'mist';
+  let sidebarWrapper = document.querySelector('.sidebar-wrapper');
+  if (sidebarMeta && (scheme === 'pisces' || scheme === 'gemini')) {
+    document.addEventListener('scroll', function(e) {
+      if (document.scrollingElement.scrollTop > parseInt(sidebarMeta.style.marginTop) + 10) {
+        sidebarWrapper.classList.add('home-sidebar-fixed')
+      } else {
+        sidebarWrapper.classList.remove('home-sidebar-fixed')
+      }
+    });
+  }
+  </script>
+        <div class="section-box mist box-shadow-wrapper">
+          <section class="friends-section bg-color slide-down-in">
+            <div class="firends-box">
+              <h1 class="firends-title" itemprop="name headline">友情链接</h1>
+              
+              
+              
+            </div>
+            <hr>
+            <div style="text-align:center">
+              <span class="with-love">
+                <i class="fa fa-heart"></i>
+              </span>
+              <span class="language" data-lan="leave-message">留言添加友链</span>
+              <span class="with-love">
+                <i class="fa fa-heart"></i>
+              </span>
+            </div>
+            <hr>
+            <div class="friends-note">
+              <p><strong class="language" data-lan="format">友链格式：</strong></p>
+              <ul>
+                <li><span class="language" data-lan="site-name">网站名称：</span>Amend</li>
+                <li><span class="language" data-lan="site-link">网站地址：</span><a href="https://github.com/amendge/amendge.github.io" data-pjax-state="">https://github.com/amendge/amendge.github.io</a></li>
+                <li><span class="language" data-lan="site-desc">网站描述：</span>温故而知新</li>
+                <li><span class="language" data-lan="site-img">网站头像：</span>
+                  <a href="https://github.com/amendge/amendge.github.io/images/avatar.png">https://github.com/amendge/amendge.github.io/images/avatar.png</a>
+                </li>
+              </ul>
+            </div>
+            
+  
+
+          </section>
+        </div>
+      </div>
+    </div>
+    <div class="footer-box">
+  <footer class="footer">
+    <div class="copyright">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | © 2019-2020 Theme By <a
+        href="https://github.com/hsxyhao/gridea-theme-next" target="_blank">HsxyHao</a>
+    </div>
+    <div class="poweredby">
+      Powered by <a href="https://github.com/amendge" target="_blank">Amend</a>
+    </div>
+  </footer>
+  
+  
+  <div class="drawer-box left" id="drawer_box">
+    <span class="muse-line muse-line-first"></span>
+    <span class="muse-line muse-line-middle"></span>
+    <span class="muse-line muse-line-last"></span>
+  </div>
+  
+  <div class="mist back-to-top" id="back_to_top">
+    <i class="fa fa-arrow-up"></i>
+    
+  </div>
+  
+  
+  
+</div>
+<script>
+
+  let sideBarOpen = 'sidebar-open';
+  let body = document.body;
+  let back2Top = document.querySelector('#back_to_top'),
+    back2TopText = document.querySelector('#back_to_top_text'),
+    drawerBox = document.querySelector('#drawer_box'),
+    rightSideBar = document.querySelector('.sidebar'),
+    viewport = document.querySelector('body');
+
+  function scrollAnimation(currentY, targetY) {
+
+    let needScrollTop = targetY - currentY
+    let _currentY = currentY
+    setTimeout(() => {
+      const dist = Math.ceil(needScrollTop / 10)
+      _currentY += dist
+      window.scrollTo(_currentY, currentY)
+      if (needScrollTop > 10 || needScrollTop < -10) {
+        scrollAnimation(_currentY, targetY)
+      } else {
+        window.scrollTo(_currentY, targetY)
+      }
+    }, 1)
+  }
+
+  back2Top.addEventListener("click", function (e) {
+    scrollAnimation(document.scrollingElement.scrollTop, 0);
+    e.stopPropagation();
+    return false;
+  });
+
+  window.addEventListener('scroll', function (e) {
+    let percent = document.scrollingElement.scrollTop / (document.scrollingElement.scrollHeight - document.scrollingElement.clientHeight) * 100;
+    if (percent > 1 && !back2Top.classList.contains('back-top-active')) {
+      back2Top.classList.add('back-top-active');
+    }
+    if (percent == 0) {
+      back2Top.classList.remove('back-top-active');
+    }
+    if (back2TopText) {
+      back2TopText.textContent = Math.floor(percent);
+    }
+  });
+
+
+  let hasCacu = false;
+  window.onresize = function () {
+    calcuHeight();
+  }
+
+  function calcuHeight() {
+    // 动态调整站点概览高度
+    if (!hasCacu && back2Top.classList.contains('pisces') || back2Top.classList.contains('gemini')) {
+      let sideBar = document.querySelector('.sidebar');
+      let navUl = document.querySelector('#site_nav');
+      sideBar.style = 'margin-top:' + (navUl.offsetHeight + navUl.offsetTop + 15) + 'px;';
+      hasCacu = true;
+    }
+  }
+  calcuHeight();
+
+  let open = false, MOTION_TIME = 300, RIGHT_MOVE_DIS = '320px';
+
+  if (drawerBox) {
+    let rightMotions = document.querySelectorAll('.right-motion');
+    let right = drawerBox.classList.contains('right');
+
+    let transitionDir = right ? "transition.slideRightIn" : "transition.slideLeftIn";
+
+    let openProp, closeProp;
+    if (right) {
+      openProp = {
+        paddingRight: RIGHT_MOVE_DIS
+      };
+      closeProp = {
+        paddingRight: '0px'
+      };
+    } else {
+      openProp = {
+        paddingLeft: RIGHT_MOVE_DIS
+      };
+      closeProp = {
+        paddingLeft: '0px'
+      };
+    }
+
+    drawerBox.onclick = function () {
+      open = !open;
+      window.Velocity(rightSideBar, 'stop');
+      window.Velocity(viewport, 'stop');
+      window.Velocity(rightMotions, 'stop');
+      if (open) {
+        window.Velocity(rightSideBar, {
+          width: RIGHT_MOVE_DIS
+        }, {
+          duration: MOTION_TIME,
+          begin: function () {
+            window.Velocity(rightMotions, transitionDir, {});
+          }
+        })
+        window.Velocity(viewport, openProp, {
+          duration: MOTION_TIME
+        });
+      } else {
+        window.Velocity(rightSideBar, {
+          width: '0px'
+        }, {
+          duration: MOTION_TIME,
+          begin: function () {
+            window.Velocity(rightMotions, {
+              opacity: 0
+            });
+          }
+        })
+        window.Velocity(viewport, closeProp, {
+          duration: MOTION_TIME
+        });
+      }
+      for (let i = 0; i < drawerBox.children.length; i++) {
+        drawerBox.children[i].classList.toggle('muse-line');
+      }
+      drawerBox.classList.toggle(sideBarOpen);
+    }
+  }
+
+  // 链接跳转
+  let newWindow = 'false'
+  if (newWindow === 'true') {
+    let links = document.querySelectorAll('.post-body a')
+    links.forEach(item => {
+      if (!item.classList.contains('btn')) {
+        item.setAttribute("target", "_blank");
+      }
+    })
+  }
+
+  let faSearch = document.querySelector('#fa_search');
+  faSearch.addEventListener('click', function () {
+    document.querySelector('#search_mask').style = ''
+  })
+
+  // 代码高亮
+  hljs.initHighlightingOnLoad();
+  
+  // 离开当前页title变化
+  var leaveTitle = "";
+  if (leaveTitle) {
+    document.addEventListener('visibilitychange', function () {
+      if (document.visibilityState == 'hidden') {
+        normal_title = document.title;
+        document.title = leaveTitle;
+      } else {
+        document.title = normal_title;
+      }
+    });
+  }
+
+</script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+<script>
+  let images = document.querySelectorAll('.section img');
+  console.log(images);
+  images.forEach(image => {
+    var parent = image.parentElement;
+    var next = image.nextElementSibling;
+    parent.removeChild(image);
+    var aelem = document.createElement('a');
+    aelem.href = image.src;
+    aelem.dataset['fancybox'] = 'images';
+    aelem.dataset['rel'] = 'fancybox-button';
+    aelem.classList.add('fancybox');
+    aelem.appendChild(image);
+    parent.insertBefore(aelem, next);
+  })
+</script>
+  </div>
+</body>
+
+<div class="search-mask" id="search_mask" style="display: none;">
+  <div class="search-box">
+    <div class="search-title">
+      <i class="fa fa-search"></i>
+      <div class="input-box">
+        <input id="search" type="text" class="language" data-lan="search" placeholder="搜索">
+      </div>
+      <i id="close" class="fa fa-times-circle"></i>
+    </div>
+    <div class="stat-box">
+      <span id="stat_count">0</span><span class="language" data-lan="stat">条相关条目，使用了</span><span id="stat_times">0</span><span class="language" data-lan="stat-time">毫秒</span>
+      <hr>
+    </div>
+    <div class="result" id="result">
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://github.com/amendge/amendge.github.io/post/shi-jian-ji-yu-prometheus-han-shu-de-dong-tai-gao-jing-gui-ze/"" data-c="
+          &lt;p&gt;对于监控来说，告警规则是告警检测发出的基本，当前市面上几乎所有的开源告警软件提供的规则基本上都是静态告警规则或者范围告警&lt;/p&gt;
+&lt;!-- more --&gt;
+&lt;h1 id=&#34;先看下官方文档&#34;&gt;先看下官方文档&lt;/h1&gt;
+&lt;h2 id=&#34;官方函数英文注释&#34;&gt;官方函数英文注释&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;Holt-Winters is similar to a weighted moving average, where historical data has exponentially less influence on the current data.
+Holt-Winter also accounts for trends in data. The smoothing factor (0 &amp;lt; sf &amp;lt; 1) affects how historical data will affect the current data. A lower smoothing factor increases the influence of historical data. The trend factor (0 &amp;lt; tf &amp;lt; 1) affects
+how trends in historical data will affect the current data. A higher trend factor increases the influence.
+of trends. Algorithm taken from https://en.wikipedia.org/wiki/Exponential_smoothing titled: &amp;quot;Double exponential smoothing&amp;quot;.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;中文注释：&lt;br&gt;
+Holt-Winters类似于加权移动平均，其中历史数据对当前数据的影响呈指数级减小。&lt;br&gt;
+Holt-Winters也解释了数据的趋势。平滑因子(0 &amp;lt; sf &amp;lt; 1)影响历史数据对电流的影响&lt;br&gt;
+数据。平滑因子越低，历史数据的影响越大。趋势因子(0 &amp;lt; tf &amp;lt; 1)影响&lt;br&gt;
+历史数据的趋势将如何影响当前数据。趋势因子越高，影响越大的趋势。算法取自https://en.wikipedia.org/wiki/Exponential_smoothing标题:“双指数平滑”&lt;/p&gt;
+&lt;h2 id=&#34;官方函数代码&#34;&gt;官方函数代码&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;func funcHoltWinters(vals []parser.Value, args parser.Expressions, enh *EvalNodeHelper) Vector {
+	samples := vals[0].(Matrix)[0]
+
+	// The smoothing factor argument.
+	sf := vals[1].(Vector)[0].V
+
+	// The trend factor argument.
+	tf := vals[2].(Vector)[0].V
+
+	// Sanity check the input.
+	if sf &amp;lt;= 0 || sf &amp;gt;= 1 {
+		panic(errors.Errorf(&amp;quot;invalid smoothing factor. Expected: 0 &amp;lt; sf &amp;lt; 1, got: %f&amp;quot;, sf))
+	}
+	if tf &amp;lt;= 0 || tf &amp;gt;= 1 {
+		panic(errors.Errorf(&amp;quot;invalid trend factor. Expected: 0 &amp;lt; tf &amp;lt; 1, got: %f&amp;quot;, tf))
+	}
+
+	l := len(samples.Points)
+
+	// Can&#39;t do the smoothing operation with less than two points.
+	if l &amp;lt; 2 {
+		return enh.Out
+	}
+
+	var s0, s1, b float64
+	// Set initial values.
+	s1 = samples.Points[0].V
+	b = samples.Points[1].V - samples.Points[0].V
+
+	// Run the smoothing operation.
+	var x, y float64
+	for i := 1; i &amp;lt; l; i++ {
+
+		// Scale the raw value against the smoothing factor.
+		x = sf * samples.Points[i].V
+
+		// Scale the last smoothed value with the trend at this point.
+		b = calcTrendValue(i-1, tf, s0, s1, b)
+		y = (1 - sf) * (s1 + b)
+
+		s0, s1 = s1, x+y
+	}
+
+	return append(enh.Out, Sample{
+		Point: Point{V: s1},
+	})
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;calctrendvalue注释&#34;&gt;calcTrendValue注释&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt; Calculate the trend value at the given index i in raw data d.
+This is somewhat analogous to the slope of the trend at the given index.
+The argument &amp;quot;tf&amp;quot; is the trend factor.
+The argument &amp;quot;s0&amp;quot; is the computed smoothed value.
+The argument &amp;quot;s1&amp;quot; is the computed trend factor.
+The argument &amp;quot;b&amp;quot; is the raw input value.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;中文注释：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;计算原始数据d中给定索引i处的趋势值。&lt;/li&gt;
+&lt;li&gt;这有点类似于给定指数处趋势的斜率。&lt;/li&gt;
+&lt;li&gt;参数“tf”是趋势因子。&lt;/li&gt;
+&lt;li&gt;参数&amp;quot;s0&amp;quot;是计算得到的平滑值。&lt;/li&gt;
+&lt;li&gt;参数&amp;quot;s1&amp;quot;是计算出来的趋势因子。&lt;/li&gt;
+&lt;li&gt;参数“b”是原始输入值。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;calctrendvalue代码&#34;&gt;calcTrendValue代码&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;func calcTrendValue(i int, tf, s0, s1, b float64) float64 {
+	if i == 0 {
+		return b
+	}
+	x := tf * (s1 - s0)
+	y := (1 - tf) * b
+	return x + y
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;代码观后感&#34;&gt;代码观后感&lt;/h2&gt;
+&lt;p&gt;对于我来说这个代码看的大概就是一个算法的思路，如何基于当前给定的序列值,再根据平滑因子、历史数据比重去算一个趋势值&lt;/p&gt;
+&lt;h1 id=&#34;实践&#34;&gt;实践&lt;/h1&gt;
+&lt;h2 id=&#34;基于网络流量做突增突降异常检测&#34;&gt;基于网络流量做突增突降异常检测&lt;/h2&gt;
+&lt;p&gt;根据机器入口流量做异常突增突降告警,因为流量对于现网来说是一个周期性变化的值，根据现网请求数据的稳定性，在一定的时间内流量时趋于一定规律进行下降和上升，如果有大比例的下降或上升就回有问题&lt;br&gt;
+1.Prometheus查询流量语句&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sum(irate(node_network_receive_bytes_total{app=&amp;quot;01&amp;quot;,idc=&amp;quot;bj&amp;quot;,group=&amp;quot;test&amp;quot;,device=~&amp;quot;eth1&amp;quot;}[5m] offset 1m)*8)by(device)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;2.Prometheus record offset 5m&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;groups:
+- name: instance_net_record_rules
+  rules:
+  - record: net_offset_5m:node_network_receive:bj_test_01
+    expr: sum(irate(node_network_receive_bytes_total{app=&amp;quot;01&amp;quot;,idc=&amp;quot;bj&amp;quot;,group=&amp;quot;test&amp;quot;,device=~&amp;quot;eth1&amp;quot;}[1m] offset 5m)*8)by(device)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;正式的告警规则&lt;br&gt;
+中文注释:app=&amp;quot;01&amp;quot;,idc=&amp;quot;bj&amp;quot;,group=&amp;quot;test&amp;quot;的机器eth1网卡入口流量和五分钟前流量对比 波动超30%&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;abs(sum(irate(node_network_receive_bytes_total{app=&amp;quot;01&amp;quot;,idc=&amp;quot;bj&amp;quot;,group=&amp;quot;test&amp;quot;,device=~&amp;quot;eth1&amp;quot;}[1m])*8)by(device) - holt_winters(net_offset_5m:node_network_receive:bj_test_01[1h],0.5,0.8))/1024^2 &amp;gt; holt_winters(net_offset_5m:node_network_receive:bj_test_01[1h],0.5,0.8)*0.3/1024^2 &amp;gt;5
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;拆分解析:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;abs是为了去正整数&lt;/li&gt;
+&lt;li&gt;holt_winters(net_offset_5m:node_network_receive:bj_test_01[1h],0.5,0.8))/1024^2 根据一分钟前所得的数据进行平滑拟合除当前大概的数据&lt;/li&gt;
+&lt;li&gt;1024^2 流量单位转换&lt;/li&gt;
+&lt;li&gt;大于5 为了去除最低谷时流量较低告警&lt;br&gt;
+4.对比&lt;br&gt;
+holt_winters(net_offset_5m:node_network_receive:bj_test_01[1h],0.5,0.8)等同于&lt;br&gt;
+sum(irate(node_network_receive_bytes_total{app=&amp;quot;01&amp;quot;,idc=&amp;quot;bj&amp;quot;,group=&amp;quot;test&amp;quot;,device=~&amp;quot;eth1&amp;quot;}[1m])*8)by(device)&lt;br&gt;
+效果图:&lt;br&gt;
+&lt;img src=&#34;https://github.com/amendge/amendge.github.io/post-images/1617866977845.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/li&gt;
+&lt;/ul&gt;
+">【实践】基于Prometheus函数的动态告警规则</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://github.com/amendge/amendge.github.io/post/jian-kong-gao-jing-ju-he-orgao-jing-zhao-hui-gong-neng-shi-xian/"" data-c="
+          &lt;pre&gt;&lt;code&gt;    监控系统发展的过程中，当你的系统监控规则和数据比较完善的时候或者覆盖面比较高的情况下，在发生问题时就会产生大量的告警信息或者持续的告警，在告警的持续阶段从低-中-高和相关的告警都会出现多次。所以在告警发生时对于关键信息的提取尤为关键
+&lt;/code&gt;&lt;/pre&gt;
+&lt;!-- more --&gt;
+&lt;h1 id=&#34;针对应用告警&#34;&gt;针对应用告警:&lt;/h1&gt;
+&lt;p&gt;我们应用告警主要采用Prometheus，基于Alertmanager做了基于alertname、instance和pod的分组聚合覆盖容器和自定义指标的分组聚合，以及根据定义的级别进行了同组、同机器、同集群高级别静默低级别&lt;br&gt;
+参考: https://www.noalert.cn/post/ru-he-yong-yuan-sheng-prometheus-jian-kong-da-gui-mo-kubernetes-ji-qun/&lt;/p&gt;
+&lt;h1 id=&#34;针对业务告警&#34;&gt;针对业务告警：&lt;/h1&gt;
+&lt;p&gt;逻辑架构:&lt;br&gt;
+&lt;img src=&#34;https://github.com/amendge/amendge.github.io/post-images/1617864543945.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+业务模块:&lt;br&gt;
+&lt;img src=&#34;https://github.com/amendge/amendge.github.io/post-images/1617864150672.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+我们的业务告警全部是基于现网日志去做的监控告警分析,现网基本覆盖所有组件的性能日志和业务日志。对于消费链路、消费过程中的问题和打日志的规范问题不做阐述&lt;/p&gt;
+&lt;h2 id=&#34;业务告警规则&#34;&gt;业务告警规则：&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;基于给定的状态码或耗时进行全量日志的比例分析和关键词提取&lt;/li&gt;
+&lt;li&gt;告警检测时间 默认一分钟&lt;/li&gt;
+&lt;li&gt;告警检测全量数据默认为type:_doc,部分自定义&lt;/li&gt;
+&lt;li&gt;告警规则带有业务模块属性&lt;/li&gt;
+&lt;li&gt;告警规则带有告警推送地址&lt;/li&gt;
+&lt;li&gt;告警规则带有检测比例属性&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;业务规则模板&#34;&gt;业务规则模板&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;index: access-xxxx-*
+name: aiuiathenaosstimeout
+type: percentage_match
+
+percentage_config:
+  items:
+    高: [5, 100]
+    中: [1, 5]
+    低: [0.1, 1]
+percentage_format_string: &amp;quot;%.3f&amp;quot;
+match_min_num: 10
+aiui_group: [&#39;aiui-athena-nlu&#39;]
+minutes: 1
+
+filter:
+- term:
+    _type: doc
+match_bucket_filter:
+- terms:
+    ret: [11004]
+http_post_url: &amp;quot;http://xxxxxxx:8088/alert&amp;quot;
+http_post_static_payload:
+    subject: 上海-入口-组件名称-11004异常状态码监控
+    message: 上海-组件异常ret-11004
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;业务告警格式&#34;&gt;业务告警格式&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&#34;language-{&#39;match_count&#39;:&#34;&gt;_group&#39;: [&#39;athena&#39;, &#39;aiui-test&#39;], &#39;_level&#39;: &#39;低&#39;, &#39;num_matches&#39;: 1, &#39;message&#39;: &#39;告警信息二&#39;, &#39;match_percentage&#39;: &#39;0.110&#39;, &#39;subject&#39;: &#39;告警标
+题二&#39;}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;talking-is-cheap-show-me-code&#34;&gt;talking is cheap show me code&lt;/h1&gt;
+&lt;p&gt;##代码环境&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Python tornado 框架&lt;/li&gt;
+&lt;li&gt;elastalert&lt;br&gt;
+##主体更改&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;AGG_LOOP_MS = 65000  #毫秒
+MAX_AGG_SECONDS = 3600 #秒
+ALERT_TTL = 90 #秒
+EVENT_LOG_FILE =  &amp;quot;./test.log&amp;quot;
+
+now = time.time()
+unique_value = str(random.randint(0, 3000000000))
+#unique_value = str(random.sample(&#39;abcdefghijklmnopqrstuvwxyz0123456789&#39;, 8))
+logger = EventLogger(EVENT_LOG_FILE)
+logger.write(now, &amp;quot;alert&amp;quot;, &amp;quot;merge&amp;quot;, unique_value, ALERT_TTL, json.dumps(data,ensure_ascii=False))
+#框架调用
+ioloop.PeriodicCallback(cronjob_aggregation, AGG_LOOP_MS).start()
+ioloop.IOLoop.current().start()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;event_loggerpy-告警写入和读取&#34;&gt;event_logger.py #告警写入和读取&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;#!python3
+# -*- coding: utf-8 -*-
+import json
+import os
+import pathlib
+import requests
+
+TS = 0
+EVENT_TYPE = 1
+STATUS = 2
+UNIQ_VALUE = 3
+TTL = 4
+MSG = 5
+class EventLogger(object):
+    file_path = &amp;quot;&amp;quot;
+    content = []
+
+    def __init__(self, file_path):
+        self.file_path = file_path
+        self.read()
+
+    def __del__(self):
+        pass
+
+    def write(self, ts, event_type, status, uniq_value, ttl, msg):
+        if isinstance(msg, dict):
+            msg = json.dumps(msg)
+        with open(self.file_path, &amp;quot;a+&amp;quot;) as f:
+            ts = int(ts)
+            ttl = int(ttl)
+            f.write(&amp;quot;{};{};{};{};{};{}\n&amp;quot;.format(ts, event_type, status, uniq_value, ttl, msg))
+            self.content.append((ts, event_type, status, uniq_value, ttl, msg))
+            print &amp;quot;alert insert ok&amp;quot;
+
+    def read(self):
+        if not os.path.isfile(self.file_path):
+            pathlib.Path(self.file_path).touch()
+        with open(self.file_path, &amp;quot;r&amp;quot;) as f:
+            self.content = []
+            #for l in f.readlines():
+            for l in f.read().splitlines():
+                l = l.split(&amp;quot;;&amp;quot;)
+                info = l[:MSG]
+                info[TS] = int(info[TS])
+                info[TTL] = int(info[TTL])
+                msg = &amp;quot;;&amp;quot;.join(l[MSG:])
+                self.content.append((info + [msg]))
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;聚合核心部分&#34;&gt;聚合核心部分：&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;def cronjob_aggregation():
+    logger = EventLogger(EVENT_LOG_FILE)
+    content = [x for x in logger.content]
+    content.reverse()
+    now = time.time()
+    left_time = now - MAX_AGG_SECONDS
+
+    msg_to_send = defaultdict(list)
+    wechatid_to_send = list()
+    already_send_set = dict()
+    to_group = 0
+    # 获取所有没有发送的聚合消息
+    for row in content:
+        if row[TS] &amp;lt; left_time:
+            break  # 超过支持的最大消息过期时间就不处理了
+        if row[EVENT_TYPE] == &amp;quot;alert&amp;quot; and row[STATUS] == &amp;quot;merge&amp;quot; and row[UNIQ_VALUE] not in already_send_set:
+            msg_to_send[row[UNIQ_VALUE]].append(row)
+        if row[EVENT_TYPE] == &amp;quot;alert&amp;quot; and row[STATUS] == &amp;quot;send&amp;quot; and row[UNIQ_VALUE] not in already_send_set:
+            already_send_set[row[UNIQ_VALUE]] = int(row[TTL]) + int(row[TS])  # 标记每个聚合消息的超时时间
+        if &#39;aiui_group&#39; in json.loads(row[MSG]).keys() and row[UNIQ_VALUE] not in already_send_set:
+            wechatid_to_send.append(parse_user_info(json.loads(row[MSG]))[&#39;id&#39;])
+        if &#39;level&#39; in json.loads(row[MSG]) and row[UNIQ_VALUE] not in already_send_set:
+           if json.loads(row[MSG])[&#39;level&#39;].encode(&amp;quot;utf-8&amp;quot;) in [&amp;quot;高&amp;quot;,&amp;quot;disaster&amp;quot;]:
+              to_group = 1
+
+    # 发送这些消息
+    alert_content = &#39;&#39;
+    list_alert_content = []
+    level_list = []
+    for k, v in msg_to_send.items():
+        if int(time.time()) &amp;lt;= already_send_set.get(k, 0):
+            continue  # 没到超时时间的直接跳过
+        msg_decoded = [json.loads(x[MSG]) for x in v]
+        list_alert_content += [x[&amp;quot;message&amp;quot;] for x in msg_decoded]
+        alert_content = &#39;\n&#39;.join(list_alert_content)
+        subject = &amp;quot;[聚合消息] {}&amp;quot;.format(msg_decoded[-1][&amp;quot;subject&amp;quot;])
+        logger.write(now, &amp;quot;alert&amp;quot;, &amp;quot;send&amp;quot;, k, v[-1][TTL], json.dumps({&amp;quot;subject&amp;quot;:subject, &amp;quot;message&amp;quot;:alert_content},ensure_ascii=False))
+    if msg_to_send.items() and len(msg_to_send.items()) &amp;gt; 1 and to_group == 1:
+       subject += &#39; 共&#39;+str(len(msg_to_send.items())) +&#39;条告警&#39;
+       send2tag(subject.encode(&amp;quot;utf-8&amp;quot;),alert_content,&#39;|&#39;.join(wechatid_to_send))
+       send2group(subject.encode(&amp;quot;utf-8&amp;quot;),alert_content)
+    elif msg_to_send.items() and len(msg_to_send.items()) &amp;gt; 1 and to_group == 0:
+       subject += &#39; 共&#39;+str(len(msg_to_send.items())) +&#39;条告警&#39;
+       send2tag(subject.encode(&amp;quot;utf-8&amp;quot;),alert_content,&#39;|&#39;.join(wechatid_to_send))
+    else:
+       subject = &amp;quot;[业务告警] {}&amp;quot;.format(msg_decoded[-1][&amp;quot;subject&amp;quot;])
+       send2tag(subject.encode(&amp;quot;utf-8&amp;quot;),alert_content,&#39;|&#39;.join(wechatid_to_send))
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;还可以根据重要的告警级别进行TTL时间内的高级别告警召回，代码如上更改捞取数据和发送规则即可&lt;/strong&gt;&lt;/p&gt;
+">【监控】告警聚合|告警召回功能实现</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://github.com/amendge/amendge.github.io/post/shi-jian-prometheus-ri-jian-zeng-chang-de-nei-cun-ru-he-zuo-hash-fen-chi/"" data-c="
+          &lt;p&gt;Prometheus唯一的缺点就是监控项越来越多的情况下,内存消耗是很大的,如果根据指标项进行搜集分割？&lt;/p&gt;
+&lt;!-- more --&gt;
+&lt;h1 id=&#34;落盘设计&#34;&gt;落盘设计：&lt;/h1&gt;
+&lt;p&gt;Prometheus在数据落盘的流程上进行了一定的考虑。&lt;br&gt;
+完整的数据流程应该是:pull-&amp;gt;prometheus-&amp;gt;memory-&amp;gt;wal-&amp;gt;tsdb-&amp;gt;filesystem.&lt;br&gt;
+正常的情况下，Prometheus会把最新搜集到的数据放在内存中，针对搜集量较大，metrics内包含较大、较多label的和监控项 time series较多的监控指标来说存在内存里是不太友好的，会占用较高的内存使用，同时内存里面也会存储相对较老还没有落盘的数据。以t0-t1为最新时间，t1-t2为较老时间，t3,t4... 内存中: (t0-t1的series+t1-t2的series)&lt;br&gt;
+&lt;img src=&#34;https://github.com/amendge/amendge.github.io/post-images/1617867267806.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;那么带来的问题就来了：&lt;br&gt;
+1.如果Prometheus重启怎么办？&lt;br&gt;
+如果Prometheus重启的话，Prometheus本地会有缓存文件WAL存储还未落盘的数据，一般来说不会造成大量的数据丢失，但是在一定的数据量下，Prometheus重启会进行WAL文件加载到内存，加载过程会造成1-2个拉取间隔的数据丢失，出现断层。同时根据数据量大小不同，加载时间也会不一样&lt;br&gt;
+2.如果查询更加久远的数据怎么办？&lt;br&gt;
+Prometheus对于更加久远的数据查询方式是从filesystem-&amp;gt;tsdb-&amp;gt;Memory的方式,如果对于一些time series较多的指标来说，压力是比较大的，此时内存中(查询的time series+新拉取的time series),所有会发现根据查询数据量的不同内存会有不同程度的上升，很大的可能撑爆内存进行重启。&lt;br&gt;
+3.如果落盘+内存不足怎么办&lt;br&gt;
+如果对于新拉取数据来不及落盘就会进行重启、OOM等，那这个时候有必要扩大内存或者进行分离了&lt;/p&gt;
+&lt;h1 id=&#34;针对内存问题进行分离&#34;&gt;针对内存问题进行分离&lt;/h1&gt;
+&lt;h2 id=&#34;架构策略&#34;&gt;架构策略&lt;/h2&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://github.com/amendge/amendge.github.io/post-images/1617867218714.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;逻辑&#34;&gt;逻辑&lt;/h2&gt;
+&lt;p&gt;1.将所有要拉起的target等信息打好标签注册到consul&lt;br&gt;
+2.Prometheus通过hashmod方式分块拉取consul配置&lt;br&gt;
+3.每个单独Prometheus都会拉取不同于其他的配置&lt;br&gt;
+4.最好对每个单独的Prometheus做数据汇总或者查询汇总&lt;/p&gt;
+&lt;h2 id=&#34;步骤以k8s部署为例&#34;&gt;步骤(以K8S部署为例)&lt;/h2&gt;
+&lt;p&gt;1.针对官方的镜像新增hashmod模块分配值&lt;br&gt;
+Dockerfile:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;FROM  prometheus/prometheus:2.20.0
+MAINTAINER name gecailong
+
+COPY ./entrypoint.sh /bin
+
+ENTRYPOINT [&amp;quot;/bin/entrypoint.sh&amp;quot;]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;entrypoint.sh：
+
+#!/bin/sh
+
+ID=${POD_NAME##*-}
+
+cp /etc/prometheus/prometheus.yml /prometheus/prometheus-hash.yml
+
+sed -i &amp;quot;s/ID_NUM/$ID/g&amp;quot; /prometheus/prometheus-hash.yml
+
+/bin/prometheus --config.file=/prometheus/prometheus-hash.yml --query.max-concurrency=20 --storage.tsdb.path=/prometheus --storage.tsdb.max-block-duration=2h --storage.tsdb.min-block-duration=2h  --storage.tsdb.retention=2h --web.listen-address=:9090 --web.enable-lifecycle --web.enable-admin-api
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;IDNUM： 为我们后面配置做准备&lt;/strong&gt;&lt;br&gt;
+2.Prometheus部署&lt;br&gt;
+Prometheus配置文件:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;  prometheus.yml: |
+    global:
+      scrape_interval:     15s
+      evaluation_interval: 15s
+
+      external_labels:
+         monitor: &#39;k8s-sh-prod&#39;
+         service: &#39;k8s-all&#39;
+         ID: &#39;ID_NUM&#39;
+         ...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这个ID是为了我们在查询的时候可以区分同时也可以作为等下hashmod模块的对应值&lt;/p&gt;
+&lt;p&gt;以拉取Node信息为例:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    - job_name: &#39;kubernetes-nodes&#39;
+      kubernetes_sd_configs:
+      - role: node
+      scheme: https
+      tls_config:
+        insecure_skip_verify: true
+      bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token
+      relabel_configs:
+      - action: labelmap
+        regex: __meta_kubernetes_node_label_(.+)
+      - source_labels: [__meta_kubernetes_node_address_InternalIP]
+        regex: (.+)
+        target_label: __address__
+        replacement: ${1}:10250 
+      - source_labels: [__meta_kubernetes_node_name]
+        regex: (.+)
+        target_label: __metrics_path__
+        replacement: /metrics
+        #以下为hashmod配置部分
+      - source_labels: [__meta_kubernetes_node_name]
+        modulus:       10   #要分成的模块总数
+        target_label:  __tmp_hash
+        action:        hashmod
+      - source_labels: [__tmp_hash]
+        regex:         ID_NUM  #当前所属模块数
+        action:        keep
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;部署文件:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  labels:
+    app: prometheus
+  name: prometheus-sts
+  namespace: monitoring
+spec:
+  serviceName: &amp;quot;prometheus&amp;quot;
+  replicas: 10   #hashmod总模块数
+  selector:
+    matchLabels:
+      app: prometheus
+  template:
+    metadata:
+      labels:
+        app: prometheus
+    spec:
+      containers:
+      - image: prometheus:2.20.0-hash
+        name: prometheus
+        securityContext:
+           runAsUser: 0
+        command:
+        - &amp;quot;/bin/entrypoint.sh&amp;quot;  #hashmod脚本执行
+        env:
+        - name: POD_NAME   #根据statefulset的特性传入POD名称用于模块取值
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.name
+        ports:
+        - name: http
+          containerPort: 9090
+          protocol: TCP
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;针对数据存储和查询的问题可以通过Thanos进行查询聚合，也可以通过victoriametrics进行数据存储的聚合在grafana界面进行统一的查询&lt;/p&gt;
+&lt;p&gt;针对内存问题进行分离&lt;/p&gt;
+">【实践】Prometheus日渐增长的内存如何做hash分离</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://github.com/amendge/amendge.github.io/post/ru-he-yong-yuan-sheng-prometheus-jian-kong-da-gui-mo-kubernetes-ji-qun/"" data-c="
+          &lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://github.com/amendge/amendge.github.io/post-images/1617861678108.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;!-- more --&gt;
+&lt;p&gt;概述&lt;br&gt;
+对于Prometheus的组件能力是毋庸置疑的，但是使用久了会发现很多的性能问题，诸如内存问题、大规模拉取问题、大规模存储问题等等&lt;/p&gt;
+&lt;p&gt;如何基于云原生Prometheus进行K8S集群基础监控大规模数据拉取本文将会给出当前答案&lt;/p&gt;
+&lt;h1 id=&#34;架构图&#34;&gt;架构图&lt;/h1&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/amendge/amendge.github.io/post-images/1617861700664.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+我们当前的监控平台架构图，根据架构图可以看出我们当前的监控平台结合了多个成熟开源组件和能力完成了当前集群的数据+指标+展示的工作&lt;br&gt;
+当前我们监控不同的K8S集群，包含不同功能、不同业务的集群，包含业务、基础和告警信息&lt;/p&gt;
+&lt;h1 id=&#34;针对k8s集群监控&#34;&gt;针对K8S集群监控&lt;/h1&gt;
+&lt;p&gt;我们采用常见的2种监控架构之一：&lt;br&gt;
+1.Prometheus-operator&lt;br&gt;
+2.Prometheus单独配置(选择的架构)&lt;br&gt;
+tips:对于Prometheus-operator 确实易于部署化、简单的servicemonitor省了很大的力气,不过对于我们这样多种私有化集群来说维护成本稍微有点高,我们选择第二种方案更多的是想省略创建服务发现的步骤，更多的采用服务发现、服务注册的能力&lt;/p&gt;
+&lt;h1 id=&#34;数据拉取&#34;&gt;数据拉取&lt;/h1&gt;
+&lt;p&gt;在数据拉取方面我们做了一定的调整为了应对大规模节点或者数据对于apiserver的大压力问题和大规模数据拉取Prometheus内存oom问题&lt;br&gt;
+a.利用K8s做服务发现，监控数据拉取由Prometheus之间拉取，降低apiserver拉取压力&lt;br&gt;
+b.采用hashmod方式进行分布式拉取缓解内存压力&lt;br&gt;
+RBAC权限修改;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRole
+metadata:
+  name: prometheus
+  namespace: monitoring
+rules:
+- apiGroups: [&amp;quot;&amp;quot;]
+  resources:
+  - nodes
+  - nodes/proxy
+  - nodes/metrics #新增路径为了外部拉取
+  - nodes/metrics/cadvisor #新增路径为了外部拉取
+  - services
+  - endpoints
+  - pods
+  verbs: [&amp;quot;get&amp;quot;, &amp;quot;list&amp;quot;, &amp;quot;watch&amp;quot;]
+- apiGroups:
+  - extensions
+  resources:
+  - ingresses
+  verbs: [&amp;quot;get&amp;quot;, &amp;quot;list&amp;quot;, &amp;quot;watch&amp;quot;]
+- nonResourceURLs: [&amp;quot;/metrics&amp;quot;]
+  verbs: [&amp;quot;get&amp;quot;]
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: prometheus
+  namespace: monitoring
+---
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRoleBinding
+metadata:
+  name: prometheus
+  namespace: monitoring
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: prometheus
+subjects:
+- kind: ServiceAccount
+  name: prometheus
+  namespace: monitoring
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;需要新增对于Node节点的/metrics和/metrics/cadvsior路径的拉取权限&lt;/code&gt;&lt;br&gt;
+以完整配置拉取示例:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;对于thanos的数据写入提供写入阿里云OSS示例&lt;/li&gt;
+&lt;li&gt;对于node_exporter数据提取 线上除K8S外皆使用consul作为配置注册和发现&lt;/li&gt;
+&lt;li&gt;对于业务自定义基于K8S做服务发现和拉取&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;主机命名规则&#34;&gt;主机命名规则&lt;/h2&gt;
+&lt;p&gt;机房-业务线-业务属性-序列数 (例:bja-athena-etcd-001)&lt;/p&gt;
+&lt;h2 id=&#34;consul自动注册示例脚本&#34;&gt;consul自动注册示例脚本&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;#!/bin/bash
+  
+#ip=$(ip addr show eth0|grep inet | awk &#39;{ print $2; }&#39; | sed &#39;s/\/.*$//&#39;)
+ip=$(ip addr | egrep -o &#39;[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}&#39; | egrep &amp;quot;^192\.168|^172\.21|^10\.101|^10\.100&amp;quot; | egrep -v &amp;quot;\.255$&amp;quot; | awk -F. &#39;{print $1&amp;quot;.&amp;quot;$2&amp;quot;.&amp;quot;$3&amp;quot;.&amp;quot;$4}&#39; | head -n 1)
+ahost=`echo $HOSTNAME`
+idc=$(echo $ahost|awk -F &amp;quot;-&amp;quot; &#39;{print $1}&#39;)
+app=$(echo $ahost|awk -F &amp;quot;-&amp;quot; &#39;{print $2}&#39;)
+group=$(echo $ahost|awk -F &amp;quot;-&amp;quot; &#39;{print $3}&#39;)
+
+if [ &amp;quot;$app&amp;quot; != &amp;quot;test&amp;quot; ]
+then
+echo &amp;quot;success&amp;quot;
+curl -X PUT -d &amp;quot;{\&amp;quot;ID\&amp;quot;: \&amp;quot;${ahost}_${ip}_node\&amp;quot;, \&amp;quot;Name\&amp;quot;: \&amp;quot;node_exporter\&amp;quot;, \&amp;quot;Address\&amp;quot;: \&amp;quot;${ip}\&amp;quot;, \&amp;quot;tags\&amp;quot;: [\&amp;quot;idc=${idc}\&amp;quot;,\&amp;quot;group=${group}\&amp;quot;,\&amp;quot;app=${app}\&amp;quot;,\&amp;quot;server=${ahost}\&amp;quot;], \&amp;quot;Port\&amp;quot;: 9100,\&amp;quot;checks\&amp;quot;: [{\&amp;quot;tcp\&amp;quot;:\&amp;quot;${ip}:9100\&amp;quot;,\&amp;quot;interval\&amp;quot;: \&amp;quot;60s\&amp;quot;}]}&amp;quot; http://consul_server:8500/v1/agent/service/register
+fi
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;完整配置文件示例&#34;&gt;完整配置文件示例&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: prometheus-config
+  namespace: monitoring
+data:
+  bucket.yaml: |
+    type: S3
+    config:
+      bucket: &amp;quot;gcl-download&amp;quot;
+      endpoint: &amp;quot;gcl-download.oss-cn-beijing.aliyuncs.com&amp;quot;
+      access_key: &amp;quot;xxxxxxxxxxxxxx&amp;quot;
+      insecure: false
+      signature_version2: false
+      secret_key: &amp;quot;xxxxxxxxxxxxxxxxxx&amp;quot;
+      http_config:
+        idle_conn_timeout: 0s
+
+  prometheus.yml: |
+    global:
+      scrape_interval:     15s
+      evaluation_interval: 15s
+
+      external_labels:
+         monitor: &#39;k8s-sh-prod&#39;
+         service: &#39;k8s-all&#39;
+         ID: &#39;ID_NUM&#39;
+         
+    remote_write:
+      - url: &amp;quot;http://vmstorage:8400/insert/0/prometheus/&amp;quot;
+    remote_read:
+      - url: &amp;quot;http://vmstorage:8401/select/0/prometheus&amp;quot;
+         
+    scrape_configs:
+    - job_name: &#39;kubernetes-apiservers&#39;
+      kubernetes_sd_configs:
+      - role: endpoints
+      scheme: https
+      tls_config:
+        ca_file: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+      bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token
+      relabel_configs:
+      - source_labels: [__meta_kubernetes_namespace, __meta_kubernetes_service_name, __meta_kubernetes_endpoint_port_name]
+        action: keep
+        regex: default;kubernetes;https 
+   
+    - job_name: &#39;kubernetes-cadvisor&#39;
+      kubernetes_sd_configs:
+      - role: node
+      scheme: https
+      tls_config:
+        #ca_file: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+        insecure_skip_verify: true
+      bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token
+      #bearer_token: monitoring
+      relabel_configs:
+      - action: labelmap
+        regex: __meta_kubernetes_node_label_(.+)
+      - source_labels: [__meta_kubernetes_node_address_InternalIP]
+        regex: (.+)
+        target_label: __address__
+        replacement: ${1}:10250
+      - source_labels: [__meta_kubernetes_node_name]
+        regex: (.+)
+        target_label: __metrics_path__
+        replacement: /metrics/cadvisor
+      - source_labels: [__meta_kubernetes_node_name]
+        modulus:       10
+        target_label:  __tmp_hash
+        action:        hashmod
+      - source_labels: [__tmp_hash]
+        regex:         ID_NUM
+        action:        keep
+      metric_relabel_configs:
+      - source_labels: [container]
+        regex: (.+)
+        target_label: container_name
+        replacement: $1
+        action: replace
+      - source_labels: [pod]
+        regex: (.+)
+        target_label: pod_name
+        replacement: $1
+        action: replace
+    
+    - job_name: &#39;kubernetes-nodes&#39;
+      kubernetes_sd_configs:
+      - role: node
+      scheme: https
+      tls_config:
+        #ca_file: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+        insecure_skip_verify: true
+      bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token
+      #bearer_token: monitoring
+      relabel_configs:
+      - action: labelmap
+        regex: __meta_kubernetes_node_label_(.+)
+      - source_labels: [__meta_kubernetes_node_address_InternalIP]
+        regex: (.+)
+        target_label: __address__
+        replacement: ${1}:10250
+      - source_labels: [__meta_kubernetes_node_name]
+        regex: (.+)
+        target_label: __metrics_path__
+        replacement: /metrics
+      - source_labels: [__meta_kubernetes_node_name]
+        modulus:       10
+        target_label:  __tmp_hash
+        action:        hashmod
+      - source_labels: [__tmp_hash]
+        regex:         ID_NUM
+        action:        keep
+      metric_relabel_configs:
+      - source_labels: [container]
+        regex: (.+)
+        target_label: container_name
+        replacement: $1
+        action: replace
+      - source_labels: [pod]
+        regex: (.+)
+        target_label: pod_name
+        replacement: $1
+        action: replace
+
+    - job_name: &#39;kubernetes-service-endpoints&#39;
+      kubernetes_sd_configs:
+      - role: endpoints
+        namespaces:
+          names:
+          - monitoring
+      relabel_configs:
+      - source_labels: [__meta_kubernetes_service_annotation_prometheus_io_scrape]
+        action: keep
+        regex: true
+      - source_labels: [__meta_kubernetes_service_annotation_prometheus_io_scheme]
+        action: replace
+        target_label: __scheme__
+        regex: (https?)
+      - source_labels: [__meta_kubernetes_service_annotation_prometheus_io_path]
+        action: replace
+        target_label: __metrics_path__
+        regex: (.+)
+      - source_labels: [__address__, __meta_kubernetes_service_annotation_prometheus_io_port]
+        action: replace
+        target_label: __address__
+        regex: ([^:]+)(?::\d+)?;(\d+)
+        replacement: $1:$2
+      - action: labelmap
+        regex: __meta_kubernetes_service_label_(.+)
+      - source_labels: [__meta_kubernetes_namespace]
+        action: replace
+        target_label: kubernetes_namespace
+      - source_labels: [__meta_kubernetes_service_name]
+        action: replace
+        target_label: kubernetes_name
+
+    - job_name: &#39;kubernetes-pods&#39;
+      kubernetes_sd_configs:
+      - role: pod
+        namespaces:
+          names:
+          - default
+      relabel_configs:
+      - action: labelmap
+        regex: __meta_kubernetes_pod_label_(.+)
+      - source_labels: [__meta_kubernetes_namespace]
+        action: replace
+        target_label: kubernetes_namespace
+      - source_labels: [__meta_kubernetes_pod_name]
+        action: replace
+        target_label: kubernetes_pod_name
+
+    - job_name: &#39;ingress-nginx-endpoints&#39;
+      kubernetes_sd_configs:
+      - role: pod
+        namespaces:
+          names:
+          - nginx-ingress
+      relabel_configs:
+      - source_labels: [__meta_kubernetes_pod_annotation_prometheus_io_scrape]
+        action: keep
+        regex: true
+      - source_labels: [__meta_kubernetes_pod_annotation_prometheus_io_scheme]
+        action: replace
+        target_label: __scheme__
+        regex: (https?)
+      - source_labels: [__meta_kubernetes_pod_annotation_prometheus_io_path]
+        action: replace
+        target_label: __metrics_path__
+        regex: (.+)
+      - source_labels: [__address__, __meta_kubernetes_pod_annotation_prometheus_io_port]
+        action: replace
+        target_label: __address__
+        regex: ([^:]+)(?::\d+)?;(\d+)
+        replacement: $1:$2
+
+    - job_name: &#39;node_exporter&#39;
+      consul_sd_configs:
+      - server: &#39;consul_server:8500&#39;
+      relabel_configs:
+          - source_labels: [__address__]
+          modulus:       10
+          target_label:  __tmp_hash
+          action:        hashmod
+          - source_labels: [__tmp_hash]
+          regex:         ID_NUM
+          action:        keep
+          - source_labels: [__tmp_hash]
+          regex:       &#39;(.*)&#39;
+          replacement: &#39;${1}&#39;
+          target_label: hash_num
+          - source_labels: [__meta_consul_tags]
+          regex: .*test.*
+          action: drop
+          - source_labels: [__meta_consul_tags]
+          regex: &#39;,(?:[^,]+,){0}([^=]+)=([^,]+),.*&#39;
+          replacement: &#39;${2}&#39;
+          target_label: &#39;${1}&#39;
+          - source_labels: [__meta_consul_tags]
+          regex: &#39;,(?:[^,]+,){1}([^=]+)=([^,]+),.*&#39;
+          replacement: &#39;${2}&#39;
+          target_label: &#39;${1}&#39;
+          - source_labels: [__meta_consul_tags]
+          regex: &#39;,(?:[^,]+,){2}([^=]+)=([^,]+),.*&#39;
+          replacement: &#39;${2}&#39;
+          target_label: &#39;${1}&#39;
+          - source_labels: [__meta_consul_tags]
+          regex: &#39;,(?:[^,]+,){3}([^=]+)=([^,]+),.*&#39;
+          replacement: &#39;${2}&#39;
+          target_label: &#39;${1}&#39;
+          - source_labels: [__meta_consul_tags]
+          regex: &#39;,(?:[^,]+,){4}([^=]+)=([^,]+),.*&#39;
+          replacement: &#39;${2}&#39;
+          target_label: &#39;${1}&#39;
+          - source_labels: [__meta_consul_tags]
+          regex: &#39;,(?:[^,]+,){5}([^=]+)=([^,]+),.*&#39;
+          replacement: &#39;${2}&#39;
+          target_label: &#39;${1}&#39;
+          - source_labels: [__meta_consul_tags]
+          regex: &#39;,(?:[^,]+,){6}([^=]+)=([^,]+),.*&#39;
+          replacement: &#39;${2}&#39;
+          target_label: &#39;${1}&#39;
+          - source_labels: [__meta_consul_tags]
+          regex: &#39;,(?:[^,]+,){7}([^=]+)=([^,]+),.*&#39;
+          replacement: &#39;${2}&#39;
+          target_label: &#39;${1}&#39;
+
+    - job_name: &#39;自定义业务监控&#39;
+      proxy_url: http://127.0.0.1:8888   #根据业务属性
+      scrape_interval: 5s
+      metrics_path: &#39;/&#39;  #根据业务提供路径
+      params:   ##根据业务属性是否带有
+        method: [&#39;get&#39;]  
+      kubernetes_sd_configs:
+      - role: pod
+      relabel_configs:
+      - source_labels: [__meta_kubernetes_pod_annotation_prometheus_io_scrape]
+        action: keep
+        regex: true
+      - source_labels: [__address__, __meta_kubernetes_pod_annotation_prometheus_io_port]
+        action: replace
+        target_label: __address__
+        regex: ([^:]+)(?::\d+)?;(\d+)
+        replacement: $1:$2
+      - source_labels: [__meta_kubernetes_pod_annotation_prometheus_name_label]
+        action: keep
+        regex: monitor  #业务自定义label
+      - action: labelmap
+        regex: __meta_kubernetes_pod_label_(.+)
+      - source_labels: [__meta_kubernetes_pod_name]
+        action: keep
+        regex: (.*)
+      - source_labels: [__meta_kubernetes_namespace]
+        action: replace
+        target_label: kubernetes_namespace
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;自定义业务拉取标识可集成cicd&#34;&gt;自定义业务拉取标识(可集成CICD)&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;  template:
+    metadata:
+      annotations:
+        prometheus.io/port: &amp;quot;port&amp;quot; #业务端口
+        prometheus.io/scrape: &amp;quot;true&amp;quot;
+        prometheus.name/label: monitor  #自定义标签
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;hashmod配置方式&#34;&gt;hashmod配置方式：&lt;/h2&gt;
+&lt;h3 id=&#34;1针对官方的镜像新增hashmod模块分配值&#34;&gt;1.针对官方的镜像新增hashmod模块分配值&lt;/h3&gt;
+&lt;p&gt;Dockerfile:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;FROM  prometheus/prometheus:2.20.0
+MAINTAINER name gecailong
+
+COPY ./entrypoint.sh /bin
+
+ENTRYPOINT [&amp;quot;/bin/entrypoint.sh&amp;quot;]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;entrypoint.sh：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#!/bin/sh
+
+ID=${POD_NAME##*-}
+
+cp /etc/prometheus/prometheus.yml /prometheus/prometheus-hash.yml
+
+sed -i &amp;quot;s/ID_NUM/$ID/g&amp;quot; /prometheus/prometheus-hash.yml
+
+/bin/prometheus --config.file=/prometheus/prometheus-hash.yml --query.max-concurrency=20 --storage.tsdb.path=/prometheus --storage.tsdb.max-block-duration=2h --storage.tsdb.min-block-duration=2h  --storage.tsdb.retention=2h --web.listen-address=:9090 --web.enable-lifecycle --web.enable-admin-api
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;IDNUM： 为我们后面配置做准备_&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;2prometheus部署&#34;&gt;2.Prometheus部署&lt;/h3&gt;
+&lt;p&gt;Prometheus配置文件:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;  prometheus.yml: |
+      external_labels:
+         monitor: &#39;k8s-sh-prod&#39;
+         service: &#39;k8s-all&#39;
+         ID: &#39;ID_NUM&#39;
+         ...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这个ID是为了我们在查询的时候可以区分同时也可以作为等下hashmod模块的对应值&lt;br&gt;
+部署文件:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  labels:
+    app: prometheus
+  name: prometheus-sts
+  namespace: monitoring
+spec:
+  serviceName: &amp;quot;prometheus&amp;quot;
+  replicas: 10 #hashmod总模块数
+  selector:
+    matchLabels:
+      app: prometheus
+  template:
+    metadata:
+      labels:
+        app: prometheus
+    spec:
+      containers:
+      - image: gecailong/prometheus-hash:0.0.1
+        name: prometheus
+        securityContext:
+           runAsUser: 0
+        command:
+        - &amp;quot;/bin/entrypoint.sh&amp;quot;
+        env:
+        - name: POD_NAME  #根据statefulset的特性传入POD名称用于模块取值
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.name
+        ports:
+        - name: http
+          containerPort: 9090
+          protocol: TCP
+        volumeMounts:
+        - mountPath: &amp;quot;/etc/prometheus&amp;quot;
+          name: config-volume
+        - mountPath: &amp;quot;/prometheus&amp;quot;
+          name: data
+        resources:
+          requests:
+            cpu: 500m
+            memory: 1000Mi
+          limits:
+            memory: 2000Mi
+      - image: gecailong/prometheus-thanos:v0.17.1
+        name: sidecar
+        imagePullPolicy: IfNotPresent
+        args:
+        - &amp;quot;sidecar&amp;quot;
+        - &amp;quot;--grpc-address=0.0.0.0:10901&amp;quot;
+        - &amp;quot;--grpc-grace-period=1s&amp;quot;
+        - &amp;quot;--http-address=0.0.0.0:10902&amp;quot;
+        - &amp;quot;--http-grace-period=1s&amp;quot;
+        - &amp;quot;--prometheus.url=http://127.0.0.1:9090&amp;quot;
+        - &amp;quot;--tsdb.path=/prometheus&amp;quot;
+        - &amp;quot;--log.level=info&amp;quot;
+        - &amp;quot;--objstore.config-file=/etc/prometheus/bucket.yaml&amp;quot;
+        ports:
+        - name: http-sidecar
+          containerPort: 10902
+        - name: grpc-sidecar
+          containerPort: 10901
+        volumeMounts:
+        - mountPath: &amp;quot;/etc/prometheus&amp;quot;
+          name: config-volume
+        - mountPath: &amp;quot;/prometheus&amp;quot;
+          name: data
+      serviceAccountName: prometheus
+      hostNetwork: true
+      dnsPolicy: ClusterFirstWithHostNet
+      imagePullSecrets: 
+        - name: regsecret
+      volumes:
+      - name: config-volume
+        configMap:
+          name: prometheus-config
+      - name: data
+        hostPath:
+          path: /data/prometheus
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;数据聚合&#34;&gt;数据聚合&lt;/h1&gt;
+&lt;p&gt;Thanos我们从18年一开始就用的它，虽然一开始的版本有很多bug也给我们带来了很多困扰,同时我们也提了很多的issue，慢慢的稳定之后，我们在此之前线上都是使用v0.2.1版本进行线上长期使用,最新的版本已经去除了基于grpc cluster服务发现的功能，UI也更加的丰富。😀我们也进行了监控平台架构重构&lt;br&gt;
+我们数据聚合采用Thanos进行查询数据聚合，同时后面我们提到的数据存储组件victoriametrics也可以实现数据聚合的功能，针对Thanos，我们主要使用它的几个子组件：query、sidecar、rule，至于其他的组件如compact、store、bucket等依据自己的业务没有进行使用.&lt;br&gt;
+我们的Thanos+Prometheus的架构图已在开头展示，以下仅给出部署和注意事项:&lt;br&gt;
+Thanos组件部署:&lt;br&gt;
+sidecar:(我们采用和Prometheus放在同一POD)&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;      - image: gecailong/prometheus-thanos:v0.17.1
+        name: thanos
+        imagePullPolicy: IfNotPresent
+        args:
+        - &amp;quot;sidecar&amp;quot;
+        - &amp;quot;--grpc-address=0.0.0.0:10901&amp;quot;
+        - &amp;quot;--grpc-grace-period=1s&amp;quot;
+        - &amp;quot;--http-address=0.0.0.0:10902&amp;quot;
+        - &amp;quot;--http-grace-period=1s&amp;quot;
+        - &amp;quot;--prometheus.url=http://127.0.0.1:9090&amp;quot;
+        - &amp;quot;--tsdb.path=/prometheus&amp;quot;
+        - &amp;quot;--log.level=info&amp;quot;
+        - &amp;quot;--objstore.config-file=/etc/prometheus/bucket.yaml&amp;quot;
+        ports:
+        - name: http-sidecar
+          containerPort: 10902
+        - name: grpc-sidecar
+          containerPort: 10901
+        env:
+        - name: POD_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
+        volumeMounts:
+        - mountPath: &amp;quot;/etc/prometheus&amp;quot;
+          name: config-volume
+        - mountPath: &amp;quot;/prometheus&amp;quot;
+          name: data
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;query组件部署:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  labels:
+    app: query
+  name: thanos-query
+  namespace: monitoring
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: query
+  template:
+    metadata:
+      labels:
+        app: query
+    spec:
+      containers:
+      - image: gecailong/prometheus-thanos:v0.17.1
+        name: query
+        imagePullPolicy: IfNotPresent
+        args:
+        - &amp;quot;query&amp;quot;
+        - &amp;quot;--http-address=0.0.0.0:19090&amp;quot;
+        - &amp;quot;--grpc-address=0.0.0.0:10903&amp;quot;
+        - &amp;quot;--store=dnssrv+_grpc._tcp.prometheus-sidecar-svc.monitoring.svc.cluster.local&amp;quot;
+        - &amp;quot;--store=dnssrv+_grpc._tcp.sidecar-query.monitoring.svc.cluster.local&amp;quot;
+        - &amp;quot;--store=dnssrv+_grpc._tcp.sidecar-rule.monitoring.svc.cluster.local&amp;quot;
+        ports:
+        - name: http-query
+          containerPort: 19090
+        - name: grpc-query
+          containerPort: 10903
+        env:
+        - name: POD_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
+      hostNetwork: true
+      dnsPolicy: ClusterFirstWithHostNet
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;rule组件部署:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  labels:
+    app: query
+  name: thanos-rule
+  namespace: monitoring
+spec:
+  replicas: 2
+  serviceName: &amp;quot;sidecar-rule&amp;quot;
+  selector:
+    matchLabels:
+      app: rule
+  template:
+    metadata:
+      labels:
+        app: rule
+    spec:
+      containers:
+      - image: gecailong/prometheus-thanos:v0.17.1
+        name: rule
+        imagePullPolicy: IfNotPresent
+        args:
+        - &amp;quot;rule&amp;quot;
+        - &amp;quot;--http-address=0.0.0.0:10902&amp;quot;
+        - &amp;quot;--grpc-address=0.0.0.0:10901&amp;quot;
+        - &amp;quot;--data-dir=/data&amp;quot;
+        - &amp;quot;--rule-file=/prometheus-rules/*.yaml&amp;quot;
+        - &amp;quot;--alert.query-url=http://sidecar-query:19090&amp;quot;
+        - &amp;quot;--alertmanagers.url=http://alertmanager:9093&amp;quot;
+        - &amp;quot;--query=http://sidecar-query:19090&amp;quot;
+        env:
+        - name: POD_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
+        volumeMounts:
+        - mountPath: &amp;quot;/prometheus-rules&amp;quot;
+          name: config-volume
+        - mountPath: &amp;quot;/data&amp;quot;
+          name: data
+        resources:
+          requests:
+            cpu: 100m
+            memory: 100Mi
+          limits:
+            memory: 1500Mi
+      hostNetwork: true
+      dnsPolicy: ClusterFirstWithHostNet
+      volumes:
+      - name: config-volume
+        configMap:
+          name: prometheus-rule
+      - name: data
+        hostPath:
+          path: /data/prometheus
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;rule通用告警规则和配置:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: prometheus-rule
+  namespace: monitoring
+data:
+  k8s_cluster_rule.yaml: |+
+    groups:
+    - name: pod_etcd_monitor
+      rules:
+      - alert: pod_etcd_num_is_changing
+        expr: sum(kube_pod_info{pod=~&amp;quot;etcd.*&amp;quot;})by(monitor) &amp;lt; 3
+        for: 1m
+        labels:
+          level: high
+          service: etcd
+        annotations:
+          summary: &amp;quot;集群:{{ $labels.monitor }},etcd集群pod低于正常总数&amp;quot;
+          description: &amp;quot;总数为3,当前值是{{ $value}}&amp;quot;
+    - name: pod_scheduler_monitor
+      rules:
+      - alert: pod_scheduler_num_is_changing
+        expr: sum(kube_pod_info{pod=~&amp;quot;kube-scheduler.*&amp;quot;})by(monitor) &amp;lt; 3
+        for: 1m
+        labels:
+          level: high
+          service: scheduler
+        annotations:
+          summary: &amp;quot;集群:{{ $labels.monitor }},scheduler集群pod低于正常总数&amp;quot;
+          description: &amp;quot;总数为3,当前值是{{ $value}}&amp;quot;
+    - name: pod_controller_monitor
+      rules:
+      - alert: pod_controller_num_is_changing
+        expr: sum(kube_pod_info{pod=~&amp;quot;kube-controller-manager.*&amp;quot;})by(monitor) &amp;lt; 3
+        for: 1m
+        labels:
+          level: high
+          service: controller
+        annotations:
+          summary: &amp;quot;集群:{{ $labels.monitor }},controller集群pod低于正常总数&amp;quot;
+          description: &amp;quot;总数为3,当前值是{{ $value}}&amp;quot;
+    - name: pod_apiserver_monitor
+      rules:
+      - alert: pod_apiserver_num_is_changing
+        expr: sum(kube_pod_info{pod=~&amp;quot;kube-apiserver.*&amp;quot;})by(monitor) &amp;lt; 3
+        for: 1m
+        labels:
+          level: high
+          service: controller
+        annotations:
+          summary: &amp;quot;集群:{{ $labels.monitor }},apiserver集群pod低于正常总数&amp;quot;
+          description: &amp;quot;总数为3,当前值是{{ $value}}&amp;quot;
+
+  k8s_master_resource_rules.yaml: |+
+    groups:
+    - name: node_cpu_resource_monitor
+      rules:
+      - alert: 节点CPU使用量
+        expr:  sum(kube_pod_container_resource_requests_cpu_cores{node=~&amp;quot;.*&amp;quot;})by(node)/sum(kube_node_status_capacity_cpu_cores{node=~&amp;quot;.*&amp;quot;})by(node)&amp;gt;0.7
+        for: 1m
+        labels:
+          level: disaster
+          service: node
+        annotations:
+          summary: &amp;quot;集群NODE节点总的CPU使用核数已经超过了70%&amp;quot;
+          description: &amp;quot;集群:{{ $labels.monitor }},节点:{{ $labels.node }}当前值为{{ $value }}!&amp;quot;
+    - name: node_memory_resource_monitor
+      rules:
+      - alert: 节点内存使用量
+        expr:  sum(kube_pod_container_resource_limits_memory_bytes{node=~&amp;quot;.*&amp;quot;})by(node)/sum(kube_node_status_capacity_memory_bytes{node=~&amp;quot;.*&amp;quot;})by(node)&amp;gt;0.7
+        for: 1m
+        labels:
+          level: disaster
+          service: node
+        annotations:
+          summary: &amp;quot;集群NODE节点总的memory使用核数已经超过了70%&amp;quot;
+          description: &amp;quot;集群:{{ $labels.monitor }},节点:{{ $labels.node }}当前值为{{ $value }}!&amp;quot;
+    - name: 节点POD使用率
+      rules:
+      - alert: 节点pod使用率
+        expr: sum by(node,monitor) (kube_pod_info{node=~&amp;quot;.*&amp;quot;}) / sum by(node,monitor) (kube_node_status_capacity_pods{node=~&amp;quot;.*&amp;quot;})&amp;gt; 0.9
+        for: 1m
+        labels:
+          level: disaster
+          service: node
+        annotations:
+          summary: &amp;quot;集群NODE节点总的POD使用数量已经超过了90%&amp;quot;
+          description: &amp;quot;集群:{{ $labels.monitor }},节点:{{ $labels.node }}当前值为{{ $value }}!&amp;quot;      
+    - name: master_cpu_used
+      rules:
+      - alert: 主节点CPU使用率
+        expr:  sum(kube_pod_container_resource_limits_cpu_cores{node=~&#39;master.*&#39;})by(node)/sum(kube_node_status_capacity_cpu_cores{node=~&#39;master.*&#39;})by(node)&amp;gt;0.7
+        for: 1m
+        labels:
+          level: disaster
+          service: node
+        annotations:
+          summary: &amp;quot;集群Master节点总的CPU申请核数已经超过了0.7,当前值为{{ $value }}!&amp;quot;
+          description: &amp;quot;集群:{{ $labels.monitor }},节点:{{ $labels.node }}当前值为{{ $value }}!&amp;quot; 
+    - name: master_memory_resource_monitor
+      rules:
+      - alert: 主节点内存使用率
+        expr:  sum(kube_pod_container_resource_limits_memory_bytes{node=~&#39;master.*&#39;})by(node)/sum(kube_node_status_capacity_memory_bytes{node=~&#39;master.*&#39;})by(node)&amp;gt;0.7
+        for: 1m
+        labels:
+          level: disaster
+          service: node
+        annotations:
+          summary: &amp;quot;集群Master节点总的内存使用量已经超过了70%&amp;quot;
+          description: &amp;quot;集群:{{ $labels.monitor }},节点:{{ $labels.node }}当前值为{{ $value }}!&amp;quot;
+    - name: master_pod_resource_monitor
+      rules:
+      - alert: 主节点POD使用率
+        expr: sum(kube_pod_info{node=~&amp;quot;master.*&amp;quot;}) by (node) / sum(kube_node_status_capacity_pods{node=~&amp;quot;master.*&amp;quot;}) by (node)&amp;gt;0.7
+        for: 1m
+        labels:
+          level: disaster
+          service: node
+        annotations:
+          summary: &amp;quot;集群Master节点总的POD使用数量已经超过了70%&amp;quot;
+          description: &amp;quot;集群:{{ $labels.monitor }},节点:{{ $labels.node }}当前值为{{ $value }}!&amp;quot;     
+  k8s_node_rule.yaml: |+
+    groups:
+    - name: K8sNodeMonitor
+      rules:
+      - alert: 集群节点资源监控
+        expr: kube_node_status_condition{condition=~&amp;quot;OutOfDisk|MemoryPressure|DiskPressure&amp;quot;,status!=&amp;quot;false&amp;quot;} ==1
+        for: 1m
+        labels:
+          level: disaster
+          service: node
+        annotations:
+          summary: &amp;quot;集群节点内存或磁盘资源短缺&amp;quot;
+          description: &amp;quot;节点:{{ $labels.node }},集群:{{ $labels.monitor }},原因:{{ $labels.condition }}&amp;quot;
+      - alert: 集群节点状态监控
+        expr: sum(kube_node_status_condition{condition=&amp;quot;Ready&amp;quot;,status!=&amp;quot;true&amp;quot;})by(node)  == 1
+        for: 2m
+        labels:
+          level: disaster
+          service: node
+        annotations:
+          summary: &amp;quot;集群节点状态出现错误&amp;quot;
+          description: &amp;quot;节点:{{ $labels.node }},集群:{{ $labels.monitor }}&amp;quot;
+      - alert: 集群POD状态监控
+        expr: sum (kube_pod_container_status_terminated_reason{reason!~&amp;quot;Completed|Error&amp;quot;})  by (pod,reason) ==1
+        for: 1m
+        labels:
+          level: high
+          service: pod
+        annotations:
+          summary: &amp;quot;集群pod状态出现错误&amp;quot;
+          description: &amp;quot;集群:{{ $labels.monitor }},名称:{{ $labels.pod }},原因:{{ $labels.reason}}&amp;quot;
+      - alert: 集群节点CPU使用监控
+        expr:  sum(node_load1) BY (instance) / sum(rate(node_cpu_seconds_total[1m])) BY (instance) &amp;gt; 2
+        for: 5m
+        labels:
+          level: disaster
+          service: node
+        annotations:
+          summary: &amp;quot;机器出现cpu平均负载过高&amp;quot;
+          description: &amp;quot;节点: {{ $labels.instance }}平均每核大于2&amp;quot;
+      - alert: NodeMemoryOver80Percent
+        expr:  (1 - avg by (instance)(node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes))* 100 &amp;gt;85
+        for: 1m
+        labels:
+          level: disaster
+          service: node
+        annotations:
+          summary: &amp;quot;机器出现内存使用超过85%&amp;quot;
+          description: &amp;quot;节点: {{ $labels.instance }}&amp;quot;
+  k8s_pod_rule.yaml: |+
+    groups:
+      - name: pod_status_monitor
+        rules:
+        - alert: pod错误状态监控
+          expr: changes(kube_pod_status_phase{phase=~&amp;quot;Failed&amp;quot;}[5m]) &amp;gt;0
+          for: 1m
+          labels:
+            level: high
+            service: pod-failed
+          annotations:
+            summary: &amp;quot;集群:{{ $labels.monitor }}存在pod状态异常&amp;quot;
+            description: &amp;quot;pod:{{$labels.pod}},状态:{{$labels.phase}}&amp;quot;
+        - alert: pod异常状态监控
+          expr: sum(kube_pod_status_phase{phase=&amp;quot;Pending&amp;quot;})by(namespace,pod,phase)&amp;gt;0
+          for: 3m
+          labels:
+            level: high
+            service: pod-pending
+          annotations:
+            summary: &amp;quot;集群:{{ $labels.monitor }}存在pod状态pening异常超10分钟&amp;quot;
+            description: &amp;quot;pod:{{$labels.pod}},状态:{{$labels.phase}}&amp;quot;
+        - alert: pod等待状态监控
+          expr: sum(kube_pod_container_status_waiting_reason{reason!=&amp;quot;ContainerCreating&amp;quot;})by(namespace,pod,reason)&amp;gt;0
+          for: 1m
+          labels:
+            level: high
+            service: pod-wait
+          annotations:
+            summary: &amp;quot;集群:{{ $labels.monitor }}存在pod状态Wait异常超5分钟&amp;quot;
+            description: &amp;quot;pod:{{$labels.pod}},状态:{{$labels.reason}}&amp;quot;
+        - alert: pod非正常状态监控
+          expr: sum(kube_pod_container_status_terminated_reason)by(namespace,pod,reason)&amp;gt;0
+          for: 1m
+          labels:
+            level: high
+            service: pod-nocom
+          annotations:
+            summary: &amp;quot;集群:{{ $labels.monitor }}存在pod状态Terminated异常超5分钟&amp;quot;
+            description: &amp;quot;pod:{{$labels.pod}},状态:{{$labels.reason}}&amp;quot;
+        - alert: pod重启监控
+          expr: changes(kube_pod_container_status_restarts_total[20m])&amp;gt;3
+          for: 3m
+          labels:
+            level: high
+            service: pod-restart
+          annotations:
+            summary: &amp;quot;集群:{{ $labels.monitor }}存在pod半小时之内重启次数超过3次!&amp;quot;
+            description: &amp;quot;pod:{{$labels.pod}}&amp;quot;
+      - name: deployment_replicas_monitor
+        rules:
+        - alert: deployment监控
+          expr: sum(kube_deployment_status_replicas_unavailable)by(namespace,deployment) &amp;gt;2
+          for: 3m
+          labels:
+            level: high
+            service: deployment-replicas
+          annotations:
+            summary: &amp;quot;集群:{{ $labels.monitor }},deployment:{{$labels.deployment}} 副本数未达到期望值! &amp;quot;
+            description: &amp;quot;空间:{{$labels.namespace}}，当前不可用副本:{{$value}},请检查&amp;quot;
+      - name: daemonset_replicas_monitor
+        rules:
+        - alert: Daemonset监控
+          expr: sum(kube_daemonset_status_desired_number_scheduled - kube_daemonset_status_current_number_scheduled)by(daemonset,namespace) &amp;gt;2
+          for: 3m
+          labels:
+            level: high
+            service: daemonset
+          annotations:
+            summary: &amp;quot;集群:{{ $labels.monitor }},daemonset:{{$labels.daemonset}} 守护进程数未达到期望值!&amp;quot;
+            description: &amp;quot;空间:{{$labels.namespace}},当前不可用副本:{{$value}},请检查&amp;quot;
+      - name: satefulset_replicas_monitor
+        rules:
+        - alert: Satefulset监控
+          expr: (kube_statefulset_replicas - kube_statefulset_status_replicas_ready) &amp;gt;2
+          for: 3m
+          labels:
+            level: high
+            service: statefulset
+          annotations:
+            summary: &amp;quot;集群:{{ $labels.monitor }},statefulset:{{$labels.statefulset}} 副本数未达到期望值!&amp;quot;
+            description: &amp;quot;空间:{{$labels.namespace}}，当前不可用副本:{{$value}},请检查&amp;quot;
+      - name: pvc_replicas_monitor
+        rules:
+        - alert: PVC监控
+          expr: kube_persistentvolumeclaim_status_phase{phase!=&amp;quot;Bound&amp;quot;} == 1
+          for: 5m
+          labels:
+            level: high
+            service: pvc
+          annotations:
+            summary: &amp;quot;集群:{{ $labels.monitor }},statefulset:{{$labels.persistentvolumeclaim}} 异常未bound成功!&amp;quot;
+            description: &amp;quot;pvc出现异常&amp;quot;
+      - name: K8sClusterJob
+        rules:	  
+        - alert: 集群JOB状态监控
+          expr: sum(kube_job_status_failed{job=&amp;quot;kubernetes-service-endpoints&amp;quot;,k8s_app=&amp;quot;kube-state-metrics&amp;quot;})by(job_name) ==1
+          for: 1m
+          labels:
+            level: disaster
+            service: job
+          annotations:
+            summary: &amp;quot;集群存在执行失败的Job&amp;quot;
+            description: &amp;quot;集群:{{ $labels.monitor }},名称:{{ $labels.job_name }}&amp;quot;
+      - name: pod_container_cpu_resource_monitor
+        rules:
+        - alert: 容器内cpu占用监控
+          expr: namespace:container_cpu_usage_seconds_total:sum_rate / sum(kube_pod_container_resource_limits_cpu_cores) by (monitor,namespace,pod_name)&amp;gt; 0.8
+          for: 1m
+          labels:
+            level: high
+            service: container_cpu
+          annotations:
+            summary: &amp;quot;集群:{{ $labels.monitor }} 出现Pod CPU使用率已经超过申请量的80%,&amp;quot;
+            description: &amp;quot;namespace:{{$labels.namespace}}的pod:{{$labels.pod}},当前值为{{ $value }}&amp;quot;
+        - alert: 容器内mem占用监控
+          expr: namespace:container_memory_usage_bytes:sum/ sum(kube_pod_container_resource_limits_memory_bytes)by(monitor,namespace,pod_name) &amp;gt; 0.8
+          for: 2m
+          labels:
+            level: high
+            service: container_mem
+          annotations:
+            summary: &amp;quot;集群:{{ $labels.monitor }} 出现Pod memory使用率已经超过申请量的90%&amp;quot;
+            description: &amp;quot;namespace:{{$labels.namespace}}的pod:{{$labels.pod}},当前值为{{ $value }}&amp;quot;
+        
+  redis_rules.yaml: |+
+    groups:
+    - name: k8s_container_rule
+    rules:
+    - expr: sum(rate(container_cpu_usage_seconds_total[5m])) by (monitor,namespace,pod_name)
+        record: namespace:container_cpu_usage_seconds_total:sum_rate
+    - expr: sum(container_memory_usage_bytes{container_name=&amp;quot;POD&amp;quot;}) by (monitor,namespace,pod_name)
+        record: namespace:container_memory_usage_bytes:sum
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;注意: 因为组件都在同一集群我们采用dnssrv的方式进行发现其他组件节点，其实对于容器内部的dnssrv方便很多，我们只需要创建一个所需要的headless service 并且使用dns srv的话，需要设置 clusterIP: None 即可.&lt;/code&gt;&lt;br&gt;
+thanos-query-svc:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: query
+  name: sidecar-query
+spec:
+  ports:
+  - name: web
+    port: 19090
+    protocol: TCP
+    targetPort: 19090
+  selector:
+    app: query
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;thanos-rule-svc:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: rule
+  name: sidecar-rule
+spec:
+  clusterIP: None
+  ports:
+  - name: web
+    port: 10902
+    protocol: TCP
+    targetPort: 10902
+  - name: grpc
+    port: 10901
+    protocol: TCP
+    targetPort: 10901
+  selector:
+    app: rule
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;prometheus+sidecar:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: prometheus
+  name: prometheus-sidecar-svc
+spec:
+  clusterIP: None
+  ports:
+  - name: web
+    port: 9090
+    protocol: TCP
+    targetPort: 9090
+  - name: grpc
+    port: 10901
+    protocol: TCP
+    targetPort: 10901
+  selector:
+    app: prometheus
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;效果图:&lt;br&gt;
+pod指标监控多集群示例:&lt;br&gt;
+&lt;img src=&#34;https://github.com/amendge/amendge.github.io/post-images/1617861801737.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+监控告警规则示例:&lt;br&gt;
+&lt;img src=&#34;https://github.com/amendge/amendge.github.io/post-images/1617861838781.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+Thanos首页:&lt;br&gt;
+&lt;img src=&#34;https://github.com/amendge/amendge.github.io/post-images/1617861846507.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h1 id=&#34;数据存储&#34;&gt;数据存储&lt;/h1&gt;
+&lt;p&gt;对于Prometheus的数据存储我们也走了很多的弯路..&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;对于开始我们使用过influxdb最终因为集群版问题放弃了，也试过重写Prometheus-adapter接入opentsdb,后来因为部分通配符维护难问题也放弃了(其实还是tcollecter的搜集问题放弃的)，我们也尝试过用Thanos-store S3打入ceph因为副本问题成本太高，也打入过阿里云的OSS,存的多 但是取数据成了一个问题。后面我们迎来了victoriametrics，基本上能解决我们大部分的主要问题。&lt;br&gt;
+架构:&lt;br&gt;
+&lt;img src=&#34;https://github.com/amendge/amendge.github.io/post-images/1617861859014.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;victoriametrics 本身是一个时序数据库，对于这样一个远端存储，同时也可以单独作为Prometheus数据源查询使用。&lt;br&gt;
+优势:&lt;br&gt;
+1.具有较高的压缩比和高性能&lt;br&gt;
+2.可以提供和Prometheus同等的数据源展示&lt;br&gt;
+3.支持metricsql同时查询时进行相同meitrics数据聚合&lt;br&gt;
+4.开源的集群版本(简直无敌)&lt;br&gt;
+对于victoriametrics我们做过一个简单的测试，相同的数据在和Prometheus原有数据对比中&lt;br&gt;
+内存大概减少50%，CPU节省超40%，磁盘占用减少约40%.并且我们通过这种方式分离了写入和读取的通道避免了新老数据共存内存造成的大内存和OOM问题，也同时提供了一个长期数据存储的成本方案&lt;br&gt;
+victoriametrics部署:&lt;br&gt;
+vminsert部署:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: monitor-vminsert
+spec:
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      vminsert: online
+  template:
+    metadata:
+      labels:
+        vminsert: online
+    spec:
+      containers:
+      - args:
+        - -storageNode=vmstorage:8400
+        image: victoriametrics/vminsert:v1.39.4-cluster
+        imagePullPolicy: IfNotPresent
+        name: vminsert
+        ports:
+        - containerPort: 8480
+          name: vminsert
+          protocol: TCP
+      dnsPolicy: ClusterFirst
+      hostNetwork: true
+      nodeSelector:
+        vminsert: online
+      restartPolicy: Always
+  updateStrategy:
+    rollingUpdate:
+      maxUnavailable: 1
+    type: RollingUpdate
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;vmselect部署:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: monitor-vmselect
+spec:
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      vmselect: online
+  template:
+    metadata:
+      labels:
+        vmselect: online
+    spec:
+      containers:
+      - args:
+        - -storageNode=vmstorage:8400
+        image: victoriametrics/vmselect:v1.39.4-cluster
+        imagePullPolicy: IfNotPresent
+        name: vmselect
+        ports:
+        - containerPort: 8481
+          name: vmselect
+          protocol: TCP
+      dnsPolicy: ClusterFirst
+      hostNetwork: true
+      nodeSelector:
+        vmselect: online
+      restartPolicy: Always
+  updateStrategy:
+    rollingUpdate:
+      maxUnavailable: 1
+    type: RollingUpdate
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;vmstorage部署:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: monitor-vmstorage
+spec:
+  replicas: 10
+  serviceName: vmstorage
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      vmstorage: online
+  template:
+    metadata:
+      labels:
+        vmstorage: online
+    spec:
+      containers:
+      - args:
+        - --retentionPeriod=1
+        - --storageDataPath=/storage
+        image: victoriametrics/vmstorage:v1.39.4-cluster
+        imagePullPolicy: IfNotPresent
+        name: vmstorage
+        ports:
+        - containerPort: 8482
+          name: http
+          protocol: TCP
+        - containerPort: 8400
+          name: vminsert
+          protocol: TCP
+        - containerPort: 8401
+          name: vmselect
+          protocol: TCP
+        volumeMounts:
+        - mountPath: /data
+          name: data
+      hostNetwork: true
+      nodeSelector:
+        vmstorage: online
+      restartPolicy: Always
+      volumes:
+      - hostPath:
+          path: /data/vmstorage
+          type: &amp;quot;&amp;quot;
+        name: data
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;vmstorage-svc (提供接口供查询、写入):&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    vmstorage: staging
+  name: vmstorage
+spec:
+  ports:
+  - name: http
+    port: 8482
+    protocol: TCP
+    targetPort: http
+  - name: vmselect
+    port: 8401
+    protocol: TCP
+    targetPort: vmselect
+  - name: vminsert
+    port: 8400
+    protocol: TCP
+    targetPort: vminsert
+  selector:
+    vmstorage: staging
+  type: NodePort
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;vminsert-svc&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    vminsert: online
+  name: monitor-vminsert
+spec:
+  ports:
+  - name: vminsert
+    port: 8480
+    protocol: TCP
+    targetPort: vminsert
+  selector:
+    vminsert: online
+  type: NodePort
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;vmselet-svc&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    vmselect: online
+  name: monitor-vmselect
+spec:
+  ports:
+  - name: vmselect
+    port: 8481
+    protocol: TCP
+    targetPort: vmselect
+  selector:
+    vmselect: online
+  type: NodePort
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;进行部署完成后需要修改Prometheus配置进行写入和查询支持&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    remote_write:
+      - url: &amp;quot;http://vmstorage:8400/insert/0/prometheus/&amp;quot;
+    remote_read:
+      - url: &amp;quot;http://vmstorage:8401/select/0/prometheus&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;grafana数据源配置:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;选择数据源类型: Prometheus
+http://vmstorage:8401/select/0/prometheus
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;效果图:&lt;br&gt;
+&lt;img src=&#34;https://github.com/amendge/amendge.github.io/post-images/1617861894002.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h1 id=&#34;告警信息&#34;&gt;告警信息&lt;/h1&gt;
+&lt;p&gt;&lt;code&gt;告警规则都是由thanos rule推送至alertmanager&lt;/code&gt;&lt;br&gt;
+告警采用的时alertmanager进行告警,同时搭配自己的告警平台进行告警的分发.&lt;br&gt;
+在配置中我们按照alertname和monitor进行分组,可以实现相同alert name下的所有告警分成一个组，进行基于Prometheus的聚合告警，同时因为现网POD较多，如发生大规模POD异常进行聚合时数据较大，单独分类。效果如后面展示&lt;br&gt;
+告警静默配置:因为现网告警都在label中定义了告警级别(warning、high、disaster)级别,对于最低级别的告警我们默认不走告警平台，根据告警的等级和告警规则进行静默。&lt;br&gt;
+例:&lt;br&gt;
+1.同monitor集群下某一个alertname按照instance进行静默，&lt;br&gt;
+2.对于大量POD告警我们基于POD告警类型进行静默&lt;br&gt;
+第一次告警时会根据分组聚合信息进行所有告警信息推送&lt;br&gt;
+alertmanager配置:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;global:
+  smtp_smarthost: &#39;mail.xxxxxxx.com:25&#39;
+  smtp_from: &#39;xxxxxxx@xxxxxxx.com&#39;
+  smtp_auth_username: &#39;xxxxxxx@xxxxxxx.com&#39;
+  smtp_auth_password: &#39;xxxxxxx&#39;
+  smtp_require_tls: false
+
+route:
+  group_by: [&#39;alertname&#39;,&#39;pod&#39;,&#39;monitor&#39;]
+  group_wait: 10s
+  group_interval: 10s
+  repeat_interval: 6h
+  receiver: &#39;webhook&#39;
+
+  routes:
+  - receiver: &#39;mail&#39;
+    match:
+      level: warning
+
+receivers:
+- name: &#39;mail&#39;
+  email_configs:
+  - to: &#39;amend@xxxxx.com,amend2@xxxxx.com&#39;
+    send_resolved: true
+
+- name: &#39;webhook&#39;
+  webhook_configs:
+  - url: &#39;http://alert.xxx.com/alert/prometheus&#39;
+    send_resolved: true
+inhibit_rules:
+  - source_match:
+      level: &#39;disaster&#39;
+    target_match_re:
+      level: &#39;high|disaster&#39;
+    equal: [&#39;alertname&#39;,&#39;instance&#39;,&#39;monitor&#39;]
+  - source_match:
+      level: &#39;high&#39;
+    target_match_re:
+      level: &#39;high&#39;
+    equal: [&#39;alertname&#39;,&#39;instance&#39;,&#39;monitor&#39;]
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;告警聚合代码示例(python):&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;        try:
+            payload = eval(self.request.body)
+        except json.decoder.JSONDecodeError:
+            raise web.HTTPError(400)
+        alert_row = payload[&#39;alerts&#39;]
+        try:
+            if len(alert_row) &amp;lt;2:
+               description =  alert_row[0][&#39;annotations&#39;][&#39;description&#39;]
+               summary =  alert_row[0][&#39;annotations&#39;][&#39;summary&#39;]
+            else:
+               for alert in alert_row:
+                   description +=  alert[&#39;annotations&#39;][&#39;description&#39;] + &#39;\n&#39;
+               summary = &#39;[聚合告警] &#39;+ alert_row[0][&#39;annotations&#39;][&#39;summary&#39;]
+        except:
+            pass
+        try:
+            namespace =  alert_row[0][&#39;labels&#39;][&#39;namespace&#39;]
+        except:
+            pass
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;效果:&lt;br&gt;
+1.对于POD的监控&lt;br&gt;
+&lt;img src=&#34;https://github.com/amendge/amendge.github.io/post-images/1617861923719.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+2.对于instance级别告警&lt;br&gt;
+&lt;img src=&#34;https://github.com/amendge/amendge.github.io/post-images/1617861946897.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+3.对于业务级别告警&lt;br&gt;
+&lt;img src=&#34;https://github.com/amendge/amendge.github.io/post-images/1617861956813.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+源码和模板:&lt;br&gt;
+https://github.com/gecailong/K8sMonitor&lt;/p&gt;
+&lt;p&gt;参考:&lt;br&gt;
+https://github.com/thanos-io/thanos&lt;br&gt;
+https://github.com/VictoriaMetrics/VictoriaMetrics&lt;br&gt;
+https://github.com/gecailong/K8sMonitor&lt;br&gt;
+https://blog.csdn.net/liukuan73/article/details/78881008&lt;/p&gt;
+">如何用原生Prometheus监控大规模Kubernetes集群</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://github.com/amendge/amendge.github.io/post/ru-he-zhen-dui-gao-xie-ru-di-cha-xun-es-ji-qun-you-hua/"" data-c="
+          &lt;p&gt;针对高并发写入的日志集群、告警集群做从日志写入、处理、集群优化提高写入吞吐量&lt;/p&gt;
+&lt;!-- more --&gt;
+&lt;p&gt;概述:ELK现在已经成为大多数公司作为日志存储、告警的通用解决方案,目前我们现网除了业务日志走大数据之外，其他组件内部支持皆为elk存储告警.&lt;br&gt;
+集群规模:&lt;br&gt;
+es集群为 28节点 每个节点5.5T盘机械硬盘 存储数据约7天/55T 写入约12w/s&lt;/p&gt;
+&lt;h1 id=&#34;高写入低查询集群&#34;&gt;高写入低查询集群:&lt;/h1&gt;
+&lt;p&gt;向索引中插入数据时，文档首先被保存在内存缓存（in-memory buffer）中，同时将操作写入到translog中，此时这条刚插入的文档还不能被搜索到。默认1秒钟refresh一次，refresh操作会将文件写到操作系统的文件系统缓存中，并形成一个segment，refresh后文档可以被检索到。&lt;br&gt;
+当flush的时候，所有segment被同步到磁盘，同时清空translog，然后生成一个新的translog,Lucene把每次生成的倒排索引叫做一个segment，也就是说一个segment就是一个倒排索引&lt;/p&gt;
+&lt;p&gt;##日志格式优化:&lt;br&gt;
+日志格式/字段：&lt;br&gt;
+日志格式统一采JSON，便于 ELK 解析处理。日志中的各个字段的值，都应该尽量使用 英文 ，不使用中文。&lt;br&gt;
+日志具体字段：分为 基础数据 + 扩展数据。基础数据，是底层日志框架自带的，所有日志都需包含。扩展数据，不同类型的日志，包含不同的字段&lt;br&gt;
+日志基础数据：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;hostname: string  主机名&lt;/li&gt;
+&lt;li&gt;hostip：string   主机ip&lt;/li&gt;
+&lt;li&gt;timestamp：date  日志产生时间(UTC 格式的日期)&lt;/li&gt;
+&lt;li&gt;module：string  服务名称&lt;/li&gt;
+&lt;li&gt;ret：int  状态码&lt;/li&gt;
+&lt;li&gt;cluster_tag：string   集群区分(环境变量$RUNENV)&lt;/li&gt;
+&lt;li&gt;calltime：int 耗时&lt;br&gt;
+注意:基础字段可全部包含但必须有可囊括字段(如ret或calltime)&lt;br&gt;
+日志扩展数据:&lt;/li&gt;
+&lt;li&gt;req\resp等请求体，扩展字段: TODO,需位于json第一层字段&lt;/li&gt;
+&lt;li&gt;stat类型日志，扩展字段: {  perf: {rss:xxx, oss:xxx} }&lt;/li&gt;
+&lt;li&gt;pipe类型日志，扩展字段: [ log:{rss:xxx, oss:xxx} ]&lt;/li&gt;
+&lt;li&gt;不带有type字段与logstash冲突导致日志写入失败&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;写入链路优化&#34;&gt;写入链路优化:&lt;/h2&gt;
+&lt;p&gt;去除写入多余字段如：req\rep等&lt;br&gt;
+压缩无需索引字段,做序列化转义压缩:如&lt;br&gt;
+&amp;quot;log&amp;quot;: &amp;quot;[{&amp;quot;calltime&amp;quot;:5,&amp;quot;methodName&amp;quot;:&amp;quot;getStartNode&amp;quot;,&amp;quot;reqArgs&amp;quot;:[&amp;quot;5ee0fd60&amp;quot;,&amp;quot;START&amp;quot;],&amp;quot;result&amp;quot;:{&amp;quot;audioUrl&amp;quot;:&amp;quot;&amp;quot;,&amp;quot;name&amp;quot;:&amp;quot;开始&amp;quot;,&amp;quot;nodeId&amp;quot;:1,&amp;quot;replyContent&amp;quot;:&amp;quot;&amp;quot;,&amp;quot;toNodeIds&amp;quot;:[2],&amp;quot;type&amp;quot;:&amp;quot;start&amp;quot;}},{&amp;quot;calltime&amp;quot;:6,&amp;quot;methodName&amp;quot;:&amp;quot;getNodeById&amp;quot;,&amp;quot;reqArgs&amp;quot;:[&amp;quot;5ee0fd60&amp;quot;,2],&amp;quot;result&amp;quot;:{&amp;quot;audioUrl&amp;quot;:&amp;quot;http://aiui.xfyun.cn/index-aiui&amp;quot;,&amp;quot;name&amp;quot;:&amp;quot;摘机问候&amp;quot;,&amp;quot;nodeId&amp;quot;:2,&amp;quot;replyContent&amp;quot;:&amp;quot;摘机问候&amp;quot;,&amp;quot;toNodeIds&amp;quot;:[3],&amp;quot;type&amp;quot;:&amp;quot;robot&amp;quot;}},{&amp;quot;calltime&amp;quot;:4,&amp;quot;methodName&amp;quot;:&amp;quot;getNodeById&amp;quot;,&amp;quot;reqArgs&amp;quot;:[&amp;quot;5ee0fd60&amp;quot;,3],&amp;quot;result&amp;quot;:{&amp;quot;audioUrl&amp;quot;:&amp;quot;&amp;quot;,&amp;quot;name&amp;quot;:&amp;quot;用户任意说&amp;quot;,&amp;quot;nodeId&amp;quot;:3,&amp;quot;replyContent&amp;quot;:&amp;quot;&amp;quot;,&amp;quot;toNodeIds&amp;quot;:[4],&amp;quot;type&amp;quot;:&amp;quot;popple&amp;quot;}},{&amp;quot;calltime&amp;quot;:4,&amp;quot;methodName&amp;quot;:&amp;quot;getNextAnswerNodes&amp;quot;,&amp;quot;reqArgs&amp;quot;:[&amp;quot;5ee0fd60&amp;quot;,{&amp;quot;audioUrl&amp;quot;:&amp;quot;http://aiui.xfyun.cn/index-aiui&amp;quot;,&amp;quot;name&amp;quot;:&amp;quot;摘机问候&amp;quot;,&amp;quot;nodeId&amp;quot;:2,&amp;quot;replyContent&amp;quot;:&amp;quot;摘机问候&amp;quot;,&amp;quot;toNodeIds&amp;quot;:[3],&amp;quot;type&amp;quot;:&amp;quot;robot&amp;quot;}],&amp;quot;result&amp;quot;:[4]}]&amp;quot;,&lt;/p&gt;
+&lt;h1 id=&#34;es-cluster集群优化&#34;&gt;Es cluster集群优化:&lt;/h1&gt;
+&lt;h2 id=&#34;机器部署&#34;&gt;机器部署:&lt;/h2&gt;
+&lt;p&gt;日志数据非业务重要可以试试RAID0,写入性能相对RAID1可以提升25-30%&lt;/p&gt;
+&lt;h2 id=&#34;针对translog优化&#34;&gt;针对translog优化:&lt;/h2&gt;
+&lt;p&gt;translog.flush_threshold_size： 1024mb&lt;br&gt;
+translog.durability ==&amp;gt;async异步方式同步&lt;/p&gt;
+&lt;h2 id=&#34;索引刷新优化&#34;&gt;索引刷新优化&lt;/h2&gt;
+&lt;p&gt;部分索引非实时搜索.想优化索引速度而不是近实时搜索,降低索引的刷新频率&lt;br&gt;
+&amp;quot;refresh_interval&amp;quot;: &amp;quot;30s&amp;quot;&lt;/p&gt;
+&lt;h2 id=&#34;分片副本优化&#34;&gt;分片副本优化&lt;/h2&gt;
+&lt;p&gt;分片和副本:针对大索引+高写入+存储大小大于150GB&lt;br&gt;
+number_of_shards 10&lt;br&gt;
+number_of_replicas 1 or 0&lt;br&gt;
+根据索引的重要程度+查询速度要求 有无副本&lt;/p&gt;
+&lt;p&gt;高写入+存储大小大于150GB + 低查询速度 有些无副本 并且分片 略小于节点数&lt;/p&gt;
+&lt;h2 id=&#34;增大静态配置参数&#34;&gt;增大静态配置参数&lt;/h2&gt;
+&lt;p&gt;indices.memory.index_buffer_size (默认10%)&lt;br&gt;
+示例:索引10shards,1副本,日约3.6亿条，存储量1T左右,设置成30%提高了约10%写入性能&lt;/p&gt;
+&lt;h2 id=&#34;避免出现热点节点&#34;&gt;避免出现热点节点&lt;/h2&gt;
+&lt;p&gt;routing.allocation.total_shards_per_node&amp;quot;:&amp;quot;2&amp;quot;&lt;/p&gt;
+&lt;h2 id=&#34;调整bulk线程池和队列&#34;&gt;调整bulk线程池和队列&lt;/h2&gt;
+&lt;h2 id=&#34;部分高频索引自建templates&#34;&gt;部分高频索引自建templates：&lt;/h2&gt;
+&lt;p&gt;写入体较大的索引,如某条日志接近上千行,不建议往es中进行写入,因字段较多，或者日志体中含有无法解析的json体或者dict体。虽然第一层字段类型被定义为text或者数组体。但是内部字段还是会被分离，被mapping.后续大量日志写入的时候就会进行大量的mapping,日志量和日志体都过大或导致merge的时候耗时高，同时进行新旧gc的时候也会耗时很大。也容易导致节点oom&lt;/p&gt;
+&lt;h1 id=&#34;查询优化&#34;&gt;查询优化:&lt;/h1&gt;
+&lt;p&gt;1.通过监控分析确定ES集群节点负载,对高负载节点做定向索引分解和必要时重启散压力操作&lt;br&gt;
+2.出现热点节点可试图通过Cerebro 或者自身es-head进行索引分片调整&lt;br&gt;
+3.查询时尽量勿选择时间长、通配字符查询、分片数量大&lt;/p&gt;
+&lt;h1 id=&#34;总结过程&#34;&gt;总结过程&lt;/h1&gt;
+&lt;p&gt;规范日志写入格式、日志写入前进行序列化、固化日志内固定字段用于后续告警&lt;br&gt;
+升级日志集群版本和新的告警对齐、日志机器统一化、模板化、集群数据节点/协调节点分离&lt;br&gt;
+优化集群配置：调整线程池和队列、translog异步优化、索引等级刷新优化、索引分类副本优化、索引&lt;br&gt;
+优化写入链路:去除写入多余字段(req/resp等)、压缩字段内部字典/数组日志、做性能日志的耗时丢弃、按照特定规则分割&lt;br&gt;
+索引优化部分重要索引优化副本、自建templates、定义好mapping规则&lt;br&gt;
+查询优化: 热点数据进行内存缓存快速查询，集群部分节点做冷数据存储,大于3天的数据抛入冷节点，&lt;br&gt;
+消费优化: 模板化单key消费模板与cicd打通,由物理机多机器部署升级至容器化部署&lt;br&gt;
+缓存优化：因缓存组件无法更换，由单节点redis升级至temproxy多节点分发，针对redis缓存队列配置和写入问题做了优化&lt;/p&gt;
+&lt;h1 id=&#34;总结&#34;&gt;总结:&lt;/h1&gt;
+&lt;p&gt;1.如果有能力上SSD+内存大小大于数据60%,可以忽略上述所有&lt;br&gt;
+2.如果针对磁盘性能问题可以试试磁盘硬件方面RAID0&lt;br&gt;
+3.整体链路优化需要从入口、过滤、写入都需要进行优化&lt;br&gt;
+4.最好的优化方法是简于形,规于心&lt;/p&gt;
+">如何针对高写入低查询es集群优化</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://github.com/amendge/amendge.github.io/post/jian-kong-jian-kong-dao-di-yao-jian-kong-na-xie-dong-xi/"" data-c="
+          &lt;p&gt;😎对于运维来说，老生常谈的就是监控.&lt;br&gt;
+那么我们该监控哪些东西才能才能及时的发现问题,不会背锅，才不会事后弥补呢&lt;/p&gt;
+&lt;!-- more --&gt;
+&lt;h1 id=&#34;名人名言&#34;&gt;名人名言&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;监控大法好，谁也跑不了&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;业务有问题，监控帮助您！&lt;/p&gt;
+&lt;p&gt;架构梳理图:&lt;br&gt;
+&lt;img src=&#34;https://github.com/amendge/amendge.github.io/post-images/1617864679339.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;从以上图可以看出作者这边把监控分为从入口到底部的一个分层:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;服务监控&lt;/li&gt;
+&lt;li&gt;中间件监控&lt;/li&gt;
+&lt;li&gt;业务监控&lt;/li&gt;
+&lt;li&gt;入口监控&lt;/li&gt;
+&lt;li&gt;接入监控&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;服务监控&#34;&gt;服务监控&lt;/h2&gt;
+&lt;p&gt;针对服务器的基础监控:&lt;br&gt;
+&lt;img src=&#34;https://github.com/amendge/amendge.github.io/post-images/1617864869984.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;中间件容器&#34;&gt;中间件/容器&lt;/h2&gt;
+&lt;p&gt;针对服务依赖中间件/载体：&lt;br&gt;
+&lt;img src=&#34;https://github.com/amendge/amendge.github.io/post-images/1617864887255.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;k8s集群&#34;&gt;K8S集群&lt;/h2&gt;
+&lt;p&gt;当前K8S已经有很多公司使用中,对于它的监控也是至关重要&lt;br&gt;
+&lt;img src=&#34;https://github.com/amendge/amendge.github.io/post-images/1617864891752.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;业务监控集成&#34;&gt;业务监控(集成)&lt;/h2&gt;
+&lt;p&gt;如果有公司使用proemtheus的可以试试在不影响服务性能的情况下继承Prometheus客户端，官方提高了不同语言的客户端&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;golang&lt;/li&gt;
+&lt;li&gt;java(jmx_exporter\pom)&lt;/li&gt;
+&lt;li&gt;python等等&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;业务监控日志&#34;&gt;业务监控(日志)&lt;/h2&gt;
+&lt;p&gt;针对组件日志监控一般需要规范格式.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;nginx日志&lt;/li&gt;
+&lt;li&gt;组件日志&lt;/li&gt;
+&lt;li&gt;请求日志&lt;/li&gt;
+&lt;li&gt;链路日志&lt;br&gt;
+一般组件日志常用状态码或者耗时进行监控，而组件业务日志包含很多敏感信息或不同类型,常用大数据聚合统计监控&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;调用监控&#34;&gt;调用监控&lt;/h2&gt;
+&lt;p&gt;针对业务做链路拨测&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;全链路拨测&lt;/li&gt;
+&lt;li&gt;重点客户拨测&lt;/li&gt;
+&lt;li&gt;全业务模块拨测&lt;/li&gt;
+&lt;li&gt;核心组件拨测&lt;/li&gt;
+&lt;/ul&gt;
+">【监控】监控到底要监控哪些东西</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://github.com/amendge/amendge.github.io/post/about/"" data-c="
+          &lt;blockquote&gt;
+&lt;p&gt;欢迎来到Amend的小站呀，很高兴遇见你！🤝&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;关于本站&#34;&gt;🏠 关于本站&lt;/h2&gt;
+&lt;p&gt;记录技术钻研的过程和结果分享、也希望可以帮助自己作为笔记记录&lt;/p&gt;
+&lt;h2 id=&#34;博主是谁&#34;&gt;👨‍💻 博主是谁&lt;/h2&gt;
+&lt;p&gt;你都不知道我是谁？💪 百度一下🔍 Amend 你会发现我啥也不是！&lt;/p&gt;
+&lt;h2 id=&#34;兴趣爱好&#34;&gt;⛹ 兴趣爱好&lt;/h2&gt;
+&lt;p&gt;1.喜欢头脑发热研究技术&lt;br&gt;
+2.极其酷爱LOL(目前已转型国粹麻将)&lt;br&gt;
+3.网球、保龄球、足球、排球这些我都不会&lt;br&gt;
+4.啥都不太喜欢,除了在家&lt;/p&gt;
+&lt;h2 id=&#34;联系我呀&#34;&gt;📬 联系我呀&lt;/h2&gt;
+&lt;p&gt;💌:645158469@qq.com&lt;/p&gt;
+">关于</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://github.com/amendge/amendge.github.io/post/welcome/"" data-c="
+          &lt;p&gt;👏 欢迎使用来到Amend的个人博客！&lt;br&gt;
+✍️ 这里用来记录我的技术攻略、知识、笔记、创意... ...&lt;/p&gt;
+&lt;!-- more --&gt;
+&lt;h2 id=&#34;talk-is-sheep-show-me-code&#34;&gt;talk is sheep show me code👇&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/gecailong&#34;&gt;Github&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;http://www.noalert.cn&#34;&gt;blog&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;特性&#34;&gt;特性👇&lt;/h2&gt;
+&lt;p&gt;📝 从业年限4年&lt;/p&gt;
+&lt;p&gt;🌉 从业方向监控为主+&lt;/p&gt;
+&lt;p&gt;🏷️ 我的标签:监控、告警、运维、小帅比&lt;/p&gt;
+&lt;p&gt;📋 这里呢记录的不仅是我自身的钻研、还有很多大神们的技术积累&lt;/p&gt;
+&lt;p&gt;💻 学过python\java\c++\golang，但是略懂python&lt;/p&gt;
+&lt;p&gt;🌎 你可以使用 𝖦𝗂𝗍𝗁𝗎𝖻 𝖯𝖺𝗀𝖾𝗌 或 Coding Pages 查看我的分享和创作来支持你的工作&lt;/p&gt;
+&lt;p&gt;🌱 当然我还很年轻，有很多不足，但请相信，我会不停向前 🏃&lt;/p&gt;
+&lt;p&gt;未来，我一定会成为你离不开的伙伴&lt;/p&gt;
+&lt;p&gt;😘 Enjoy~&lt;/p&gt;
+&lt;p&gt;😘 Enjoy~&lt;/p&gt;
+">首序</a>
+      </div>
+      
+    </div>
+    <div class="page">
+      <div id="page_ul"></div>
+    </div>
+  </div>
+</div>
+<script>
+  !function () {
+    let searchMask = document.querySelector('#search_mask');
+    let result = document.querySelector('#result');
+    let items = document.querySelectorAll('.item');
+    let searchBox = document.querySelector('#search');
+    let statCount = document.querySelector('#stat_count');
+    let statTimes = document.querySelector('#stat_times');
+    let pageUl = document.querySelector('#page_ul');
+    let close = document.querySelector('#close');
+    
+    close.addEventListener('click', function() {
+      searchMask.style = 'display: none;'
+    })
+
+    let finds = [];
+    let contents = [];
+    let pageSize = 10;
+    items.forEach(item => {
+      let a = item.querySelector('a');
+      contents.push({
+        title: a.innerText,
+        details: a.dataset.c,
+        link: a.href
+      })
+      item.remove();
+    })
+
+    function insertStr(soure, start, count) {
+      let newStr = soure.substr(start, count);
+      return soure.slice(0, start) + '<em>' + newStr + '</em>' + soure.slice(start + count);
+    }
+
+    pageUl.addEventListener('click', function(event) {
+      let target = event.target;
+      if (target.__proto__ === HTMLSpanElement.prototype) {
+        appendResults(parseInt(target.dataset.i));
+      }
+    })
+
+    function appendResults(index) {
+      let htmlResult = '';
+      let start = index || 0;
+      let end = Math.min(start + pageSize, finds.length);
+      for (let i = start; i < end; i++) {
+        const current = finds[i];
+        let html = current.title;
+        let sum = 0;
+        let positions = current.positions;
+        positions.forEach(position => {
+          html = insertStr(html, position.start + sum, position.count);
+          sum += 9;
+        })
+        htmlResult += `<div class="item"><a class="result-title" href="${current.link}">${html}</a></div>`;
+      }
+      result.innerHTML = htmlResult;
+      pageUl.innerHTML = '';
+      let count = finds.length / pageSize;
+      let lis = '';
+      if (start !== 0) {
+        lis += `<span class="fa fa-angle-left" data-i='${start - 1}'></span>`;
+      }
+      for (let i = 0; i < count; i++) {
+        lis += `<span class='${i === start?'current':''}' data-i='${i}'>${i+1}</span>`;     
+      }
+      if (start+1 < count) {
+        lis += `<span class="fa fa-angle-right" data-i='${start+1}'></span>`;  
+      }
+      pageUl.innerHTML = lis;
+    }
+
+    function search(delay) {
+      let timer = null
+      return function () {
+        clearTimeout(timer)
+        timer = setTimeout(() => {
+          let start = Date.now();
+          let segments = searchBox.value.split(' ').filter(c => c != '');
+          if (segments.length <= 0) {
+            return;
+          }
+          finds = [];
+          let htmlResult = '';
+          contents.forEach(content => {
+            let title = content.title;
+            let positions = [];
+            let find = false;
+            segments.forEach((segment) => {
+              if (content.title.includes(segment)) {
+                find = true;
+                positions.push({
+                  start: content.title.indexOf(segment),
+                  count: segment.length
+                })
+              } else if (content.details.includes(segment)) {
+                find = true;
+              }
+            });
+            if (find) {
+              finds.push({
+                title: content.title,
+                link: content.link,
+                positions
+              });
+            }
+          })
+          appendResults(0);
+          statCount.textContent = finds.length;
+          statTimes.textContent = Date.now() - start;
+        }, delay)
+      }
+    }
+    searchBox.addEventListener('input', search(200));
+  }()
+</script>
+
+<input hidden id="copy" />
+<script>
+  !function () {
+    let times = document.querySelectorAll('.publish-time');
+    for (let i = 0; i < times.length; i++) {
+      let date = times[i].dataset.t;
+      let time = Math.floor((new Date().getTime() - new Date(date).getTime()) / 1000);
+      if (time < 60) {
+        str = time + '秒之前';
+      } else if (time < 3600) {
+        str = Math.floor(time / 60) + '分钟之前';
+      } else if (time >= 3600 && time < 86400) {
+        str = Math.floor(time / 3600) + '小时之前';
+      } else if (time >= 86400 && time < 259200) {
+        str = Math.floor(time / 86400) + '天之前';
+      } else {
+        str = times[i].textContent;
+      }
+      times[i].textContent = str;
+    }
+  }();
+</script>
+
+<script>
+  let language = '';
+  if (language !== '') {
+    let map = new Map();
+    if (language === 'en') {
+      map.set('search', 'Search');
+      map.set('category', 'Categories');
+      map.set('article', 'Articles');
+      map.set('tag', 'Tags');
+      map.set('top', 'Top');
+      map.set('publish', 'published');
+      map.set('minute', ' minutes');
+      map.set('read-more', 'Read More');
+      map.set('view', 'View');
+      map.set('words', ' words');
+      map.set('category-in', 'category in');
+      map.set('preview', 'Meta');
+      map.set('index', 'Toc');
+      map.set('no-archives', "You haven't created yet");
+      map.set('archives', " articles in total");
+      map.set('cloud-tags', " tags in total");
+      map.set('copyright', "Copyright: ");
+      map.set('author', "Author: ");
+      map.set('link', "Link: ");
+      map.set('leave-message', "Leave a message");
+      map.set('format', "Links Format");
+      map.set('site-name', "Name: ");
+      map.set('site-link', "Link: ");
+      map.set('site-desc', "Desc: ");
+      map.set('stat', " related results, taking ");
+      map.set('stat-time', " ms");
+      map.set('site-img', "Image: ");
+    }
+
+    if (map.size > 0) {
+      let lanElems = document.querySelectorAll('.language');
+      lanElems.forEach(elem => {
+        let lan = elem.dataset.lan, text = map.get(lan);
+        if (elem.__proto__ === HTMLInputElement.prototype) {
+          elem.placeholder = text
+        } else {
+          if (elem.dataset.count) {
+            text = elem.dataset.count + text;
+          }
+          elem.textContent = text;
+        }
+      })
+    }
+  }
+  //拿来主义(真香)^_^，Clipboard 实现摘自掘金 https://juejin.im/post/5aefeb6e6fb9a07aa43c20af
+  window.Clipboard = (function (window, document, navigator) {
+    var textArea,
+      copy;
+
+    // 判断是不是ios端
+    function isOS() {
+      return navigator.userAgent.match(/ipad|iphone/i);
+    }
+    //创建文本元素
+    function createTextArea(text) {
+      textArea = document.createElement('textArea');
+      textArea.value = text;
+      textArea.style.width = 0;
+      textArea.style.height = 0;
+      textArea.clientHeight = 0;
+      textArea.clientWidth = 0;
+      document.body.appendChild(textArea);
+    }
+    //选择内容
+    function selectText() {
+      var range,
+        selection;
+
+      if (isOS()) {
+        range = document.createRange();
+        range.selectNodeContents(textArea);
+        selection = window.getSelection();
+        selection.removeAllRanges();
+        selection.addRange(range);
+        textArea.setSelectionRange(0, 999999);
+      } else {
+        textArea.select();
+      }
+    }
+
+    //复制到剪贴板
+    function copyToClipboard() {
+      try {
+        document.execCommand("Copy")
+      } catch (err) {
+        alert("复制错误！请手动复制！")
+      }
+      document.body.removeChild(textArea);
+    }
+
+    copy = function (text) {
+      createTextArea(text);
+      selectText();
+      copyToClipboard();
+    };
+
+    return {
+      copy: copy
+    };
+  })(window, document, navigator);
+
+  function copyCode(e) {
+    if (e.srcElement.tagName === 'SPAN' && e.srcElement.classList.contains('copy-code')) {
+      let code = e.currentTarget.querySelector('code');
+      var text = code.innerText;
+      if (e.srcElement.textContent === '复制成功') {
+        return;
+      }
+      e.srcElement.textContent = '复制成功';
+      (function (elem) {
+        setTimeout(() => {
+          if (elem.textContent === '复制成功') {
+            elem.textContent = '复制代码'
+          }
+        }, 1000);
+      })(e.srcElement)
+      Clipboard.copy(text);
+    }
+  }
+
+  let pres = document.querySelectorAll('pre');
+  pres.forEach(pre => {
+    let code = pre.querySelector('code');
+    let copyElem = document.createElement('span');
+    copyElem.classList.add('copy-code');
+    copyElem.textContent = '复制代码';
+    pre.appendChild(copyElem);
+    pre.onclick = copyCode
+  })
+
+</script>
+<script src="/media/js/motion.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+<script>
+  var scroll = new SmoothScroll('a[href*="#"]', {
+    speed: 200
+  });
+</script>
+
+
+<canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;"></canvas>
+<script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+<script type="text/javascript" src="/media/js/mouse/fireworks.js"></script>
+
+
+
+
+
+</html>
