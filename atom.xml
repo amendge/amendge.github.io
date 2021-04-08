@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>http://github.com/amendge/amendge.github.io</id>
+    <id>https://github.com/amendge/amendge.github.io</id>
     <title>Amend</title>
-    <updated>2021-04-08T08:57:33.083Z</updated>
+    <updated>2021-04-08T08:58:22.061Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="http://github.com/amendge/amendge.github.io"/>
-    <link rel="self" href="http://github.com/amendge/amendge.github.io/atom.xml"/>
+    <link rel="alternate" href="https://github.com/amendge/amendge.github.io"/>
+    <link rel="self" href="https://github.com/amendge/amendge.github.io/atom.xml"/>
     <subtitle>温故而知新</subtitle>
-    <logo>http://github.com/amendge/amendge.github.io/images/avatar.png</logo>
-    <icon>http://github.com/amendge/amendge.github.io/favicon.ico</icon>
+    <logo>https://github.com/amendge/amendge.github.io/images/avatar.png</logo>
+    <icon>https://github.com/amendge/amendge.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, Amend</rights>
     <entry>
         <title type="html"><![CDATA[【实践】基于Prometheus函数的动态告警规则]]></title>
-        <id>http://github.com/amendge/amendge.github.io/post/shi-jian-ji-yu-prometheus-han-shu-de-dong-tai-gao-jing-gui-ze/</id>
-        <link href="http://github.com/amendge/amendge.github.io/post/shi-jian-ji-yu-prometheus-han-shu-de-dong-tai-gao-jing-gui-ze/">
+        <id>https://github.com/amendge/amendge.github.io/post/shi-jian-ji-yu-prometheus-han-shu-de-dong-tai-gao-jing-gui-ze/</id>
+        <link href="https://github.com/amendge/amendge.github.io/post/shi-jian-ji-yu-prometheus-han-shu-de-dong-tai-gao-jing-gui-ze/">
         </link>
         <updated>2021-02-23T16:01:56.000Z</updated>
         <summary type="html"><![CDATA[<p>对于监控来说，告警规则是告警检测发出的基本，当前市面上几乎所有的开源告警软件提供的规则基本上都是静态告警规则或者范围告警</p>
@@ -137,14 +137,14 @@ The argument &quot;b&quot; is the raw input value.
 holt_winters(net_offset_5m:node_network_receive:bj_test_01[1h],0.5,0.8)等同于<br>
 sum(irate(node_network_receive_bytes_total{app=&quot;01&quot;,idc=&quot;bj&quot;,group=&quot;test&quot;,device=~&quot;eth1&quot;}[1m])*8)by(device)<br>
 效果图:<br>
-<img src="http://github.com/amendge/amendge.github.io/post-images/1617866977845.png" alt="" loading="lazy"></li>
+<img src="https://github.com/amendge/amendge.github.io/post-images/1617866977845.png" alt="" loading="lazy"></li>
 </ul>
 ]]></content>
     </entry>
     <entry>
         <title type="html"><![CDATA[【监控】告警聚合|告警召回功能实现]]></title>
-        <id>http://github.com/amendge/amendge.github.io/post/jian-kong-gao-jing-ju-he-orgao-jing-zhao-hui-gong-neng-shi-xian/</id>
-        <link href="http://github.com/amendge/amendge.github.io/post/jian-kong-gao-jing-ju-he-orgao-jing-zhao-hui-gong-neng-shi-xian/">
+        <id>https://github.com/amendge/amendge.github.io/post/jian-kong-gao-jing-ju-he-orgao-jing-zhao-hui-gong-neng-shi-xian/</id>
+        <link href="https://github.com/amendge/amendge.github.io/post/jian-kong-gao-jing-ju-he-orgao-jing-zhao-hui-gong-neng-shi-xian/">
         </link>
         <updated>2021-01-13T13:40:14.000Z</updated>
         <summary type="html"><![CDATA[<pre><code>    监控系统发展的过程中，当你的系统监控规则和数据比较完善的时候或者覆盖面比较高的情况下，在发生问题时就会产生大量的告警信息或者持续的告警，在告警的持续阶段从低-中-高和相关的告警都会出现多次。所以在告警发生时对于关键信息的提取尤为关键
@@ -158,9 +158,9 @@ sum(irate(node_network_receive_bytes_total{app=&quot;01&quot;,idc=&quot;bj&quot;
 参考: https://www.noalert.cn/post/ru-he-yong-yuan-sheng-prometheus-jian-kong-da-gui-mo-kubernetes-ji-qun/</p>
 <h1 id="针对业务告警">针对业务告警：</h1>
 <p>逻辑架构:<br>
-<img src="http://github.com/amendge/amendge.github.io/post-images/1617864543945.jpg" alt="" loading="lazy"><br>
+<img src="https://github.com/amendge/amendge.github.io/post-images/1617864543945.jpg" alt="" loading="lazy"><br>
 业务模块:<br>
-<img src="http://github.com/amendge/amendge.github.io/post-images/1617864150672.png" alt="" loading="lazy"><br>
+<img src="https://github.com/amendge/amendge.github.io/post-images/1617864150672.png" alt="" loading="lazy"><br>
 我们的业务告警全部是基于现网日志去做的监控告警分析,现网基本覆盖所有组件的性能日志和业务日志。对于消费链路、消费过程中的问题和打日志的规范问题不做阐述</p>
 <h2 id="业务告警规则">业务告警规则：</h2>
 <ul>
@@ -325,8 +325,8 @@ class EventLogger(object):
     </entry>
     <entry>
         <title type="html"><![CDATA[【实践】Prometheus日渐增长的内存如何做hash分离]]></title>
-        <id>http://github.com/amendge/amendge.github.io/post/shi-jian-prometheus-ri-jian-zeng-chang-de-nei-cun-ru-he-zuo-hash-fen-chi/</id>
-        <link href="http://github.com/amendge/amendge.github.io/post/shi-jian-prometheus-ri-jian-zeng-chang-de-nei-cun-ru-he-zuo-hash-fen-chi/">
+        <id>https://github.com/amendge/amendge.github.io/post/shi-jian-prometheus-ri-jian-zeng-chang-de-nei-cun-ru-he-zuo-hash-fen-chi/</id>
+        <link href="https://github.com/amendge/amendge.github.io/post/shi-jian-prometheus-ri-jian-zeng-chang-de-nei-cun-ru-he-zuo-hash-fen-chi/">
         </link>
         <updated>2020-12-18T06:32:32.000Z</updated>
         <summary type="html"><![CDATA[<p>Prometheus唯一的缺点就是监控项越来越多的情况下,内存消耗是很大的,如果根据指标项进行搜集分割？</p>
@@ -337,7 +337,7 @@ class EventLogger(object):
 <p>Prometheus在数据落盘的流程上进行了一定的考虑。<br>
 完整的数据流程应该是:pull-&gt;prometheus-&gt;memory-&gt;wal-&gt;tsdb-&gt;filesystem.<br>
 正常的情况下，Prometheus会把最新搜集到的数据放在内存中，针对搜集量较大，metrics内包含较大、较多label的和监控项 time series较多的监控指标来说存在内存里是不太友好的，会占用较高的内存使用，同时内存里面也会存储相对较老还没有落盘的数据。以t0-t1为最新时间，t1-t2为较老时间，t3,t4... 内存中: (t0-t1的series+t1-t2的series)<br>
-<img src="http://github.com/amendge/amendge.github.io/post-images/1617867267806.png" alt="" loading="lazy"></p>
+<img src="https://github.com/amendge/amendge.github.io/post-images/1617867267806.png" alt="" loading="lazy"></p>
 <p>那么带来的问题就来了：<br>
 1.如果Prometheus重启怎么办？<br>
 如果Prometheus重启的话，Prometheus本地会有缓存文件WAL存储还未落盘的数据，一般来说不会造成大量的数据丢失，但是在一定的数据量下，Prometheus重启会进行WAL文件加载到内存，加载过程会造成1-2个拉取间隔的数据丢失，出现断层。同时根据数据量大小不同，加载时间也会不一样<br>
@@ -347,7 +347,7 @@ Prometheus对于更加久远的数据查询方式是从filesystem-&gt;tsdb-&gt;M
 如果对于新拉取数据来不及落盘就会进行重启、OOM等，那这个时候有必要扩大内存或者进行分离了</p>
 <h1 id="针对内存问题进行分离">针对内存问题进行分离</h1>
 <h2 id="架构策略">架构策略</h2>
-<figure data-type="image" tabindex="1"><img src="http://github.com/amendge/amendge.github.io/post-images/1617867218714.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="1"><img src="https://github.com/amendge/amendge.github.io/post-images/1617867218714.png" alt="" loading="lazy"></figure>
 <h2 id="逻辑">逻辑</h2>
 <p>1.将所有要拉起的target等信息打好标签注册到consul<br>
 2.Prometheus通过hashmod方式分块拉取consul配置<br>
@@ -461,19 +461,19 @@ spec:
     </entry>
     <entry>
         <title type="html"><![CDATA[如何用原生Prometheus监控大规模Kubernetes集群]]></title>
-        <id>http://github.com/amendge/amendge.github.io/post/ru-he-yong-yuan-sheng-prometheus-jian-kong-da-gui-mo-kubernetes-ji-qun/</id>
-        <link href="http://github.com/amendge/amendge.github.io/post/ru-he-yong-yuan-sheng-prometheus-jian-kong-da-gui-mo-kubernetes-ji-qun/">
+        <id>https://github.com/amendge/amendge.github.io/post/ru-he-yong-yuan-sheng-prometheus-jian-kong-da-gui-mo-kubernetes-ji-qun/</id>
+        <link href="https://github.com/amendge/amendge.github.io/post/ru-he-yong-yuan-sheng-prometheus-jian-kong-da-gui-mo-kubernetes-ji-qun/">
         </link>
         <updated>2020-11-02T05:53:54.000Z</updated>
         <summary type="html"><![CDATA[<figure data-type="image" tabindex="1"><img src="/post-images/1617861678108.png" alt="" loading="lazy"></figure>
 ]]></summary>
-        <content type="html"><![CDATA[<figure data-type="image" tabindex="1"><img src="http://github.com/amendge/amendge.github.io/post-images/1617861678108.png" alt="" loading="lazy"></figure>
+        <content type="html"><![CDATA[<figure data-type="image" tabindex="1"><img src="https://github.com/amendge/amendge.github.io/post-images/1617861678108.png" alt="" loading="lazy"></figure>
 <!-- more -->
 <p>概述<br>
 对于Prometheus的组件能力是毋庸置疑的，但是使用久了会发现很多的性能问题，诸如内存问题、大规模拉取问题、大规模存储问题等等</p>
 <p>如何基于云原生Prometheus进行K8S集群基础监控大规模数据拉取本文将会给出当前答案</p>
 <h1 id="架构图">架构图</h1>
-<p><img src="http://github.com/amendge/amendge.github.io/post-images/1617861700664.png" alt="" loading="lazy"><br>
+<p><img src="https://github.com/amendge/amendge.github.io/post-images/1617861700664.png" alt="" loading="lazy"><br>
 我们当前的监控平台架构图，根据架构图可以看出我们当前的监控平台结合了多个成熟开源组件和能力完成了当前集群的数据+指标+展示的工作<br>
 当前我们监控不同的K8S集群，包含不同功能、不同业务的集群，包含业务、基础和告警信息</p>
 <h1 id="针对k8s集群监控">针对K8S集群监控</h1>
@@ -1461,17 +1461,17 @@ spec:
 </code></pre>
 <p>效果图:<br>
 pod指标监控多集群示例:<br>
-<img src="http://github.com/amendge/amendge.github.io/post-images/1617861801737.png" alt="" loading="lazy"><br>
+<img src="https://github.com/amendge/amendge.github.io/post-images/1617861801737.png" alt="" loading="lazy"><br>
 监控告警规则示例:<br>
-<img src="http://github.com/amendge/amendge.github.io/post-images/1617861838781.png" alt="" loading="lazy"><br>
+<img src="https://github.com/amendge/amendge.github.io/post-images/1617861838781.png" alt="" loading="lazy"><br>
 Thanos首页:<br>
-<img src="http://github.com/amendge/amendge.github.io/post-images/1617861846507.png" alt="" loading="lazy"></p>
+<img src="https://github.com/amendge/amendge.github.io/post-images/1617861846507.png" alt="" loading="lazy"></p>
 <h1 id="数据存储">数据存储</h1>
 <p>对于Prometheus的数据存储我们也走了很多的弯路..</p>
 <ul>
 <li>对于开始我们使用过influxdb最终因为集群版问题放弃了，也试过重写Prometheus-adapter接入opentsdb,后来因为部分通配符维护难问题也放弃了(其实还是tcollecter的搜集问题放弃的)，我们也尝试过用Thanos-store S3打入ceph因为副本问题成本太高，也打入过阿里云的OSS,存的多 但是取数据成了一个问题。后面我们迎来了victoriametrics，基本上能解决我们大部分的主要问题。<br>
 架构:<br>
-<img src="http://github.com/amendge/amendge.github.io/post-images/1617861859014.png" alt="" loading="lazy"></li>
+<img src="https://github.com/amendge/amendge.github.io/post-images/1617861859014.png" alt="" loading="lazy"></li>
 </ul>
 <p>victoriametrics 本身是一个时序数据库，对于这样一个远端存储，同时也可以单独作为Prometheus数据源查询使用。<br>
 优势:<br>
@@ -1670,7 +1670,7 @@ spec:
 http://vmstorage:8401/select/0/prometheus
 </code></pre>
 <p>效果图:<br>
-<img src="http://github.com/amendge/amendge.github.io/post-images/1617861894002.png" alt="" loading="lazy"></p>
+<img src="https://github.com/amendge/amendge.github.io/post-images/1617861894002.png" alt="" loading="lazy"></p>
 <h1 id="告警信息">告警信息</h1>
 <p><code>告警规则都是由thanos rule推送至alertmanager</code><br>
 告警采用的时alertmanager进行告警,同时搭配自己的告警平台进行告警的分发.<br>
@@ -1747,11 +1747,11 @@ inhibit_rules:
 </code></pre>
 <p>效果:<br>
 1.对于POD的监控<br>
-<img src="http://github.com/amendge/amendge.github.io/post-images/1617861923719.png" alt="" loading="lazy"><br>
+<img src="https://github.com/amendge/amendge.github.io/post-images/1617861923719.png" alt="" loading="lazy"><br>
 2.对于instance级别告警<br>
-<img src="http://github.com/amendge/amendge.github.io/post-images/1617861946897.png" alt="" loading="lazy"><br>
+<img src="https://github.com/amendge/amendge.github.io/post-images/1617861946897.png" alt="" loading="lazy"><br>
 3.对于业务级别告警<br>
-<img src="http://github.com/amendge/amendge.github.io/post-images/1617861956813.png" alt="" loading="lazy"><br>
+<img src="https://github.com/amendge/amendge.github.io/post-images/1617861956813.png" alt="" loading="lazy"><br>
 源码和模板:<br>
 https://github.com/gecailong/K8sMonitor</p>
 <p>参考:<br>
@@ -1763,8 +1763,8 @@ https://blog.csdn.net/liukuan73/article/details/78881008</p>
     </entry>
     <entry>
         <title type="html"><![CDATA[如何针对高写入低查询es集群优化]]></title>
-        <id>http://github.com/amendge/amendge.github.io/post/ru-he-zhen-dui-gao-xie-ru-di-cha-xun-es-ji-qun-you-hua/</id>
-        <link href="http://github.com/amendge/amendge.github.io/post/ru-he-zhen-dui-gao-xie-ru-di-cha-xun-es-ji-qun-you-hua/">
+        <id>https://github.com/amendge/amendge.github.io/post/ru-he-zhen-dui-gao-xie-ru-di-cha-xun-es-ji-qun-you-hua/</id>
+        <link href="https://github.com/amendge/amendge.github.io/post/ru-he-zhen-dui-gao-xie-ru-di-cha-xun-es-ji-qun-you-hua/">
         </link>
         <updated>2020-07-22T06:32:41.000Z</updated>
         <summary type="html"><![CDATA[<p>针对高并发写入的日志集群、告警集群做从日志写入、处理、集群优化提高写入吞吐量</p>
@@ -1846,8 +1846,8 @@ number_of_replicas 1 or 0<br>
     </entry>
     <entry>
         <title type="html"><![CDATA[【监控】监控到底要监控哪些东西]]></title>
-        <id>http://github.com/amendge/amendge.github.io/post/jian-kong-jian-kong-dao-di-yao-jian-kong-na-xie-dong-xi/</id>
-        <link href="http://github.com/amendge/amendge.github.io/post/jian-kong-jian-kong-dao-di-yao-jian-kong-na-xie-dong-xi/">
+        <id>https://github.com/amendge/amendge.github.io/post/jian-kong-jian-kong-dao-di-yao-jian-kong-na-xie-dong-xi/</id>
+        <link href="https://github.com/amendge/amendge.github.io/post/jian-kong-jian-kong-dao-di-yao-jian-kong-na-xie-dong-xi/">
         </link>
         <updated>2020-03-06T02:49:52.000Z</updated>
         <summary type="html"><![CDATA[<p>😎对于运维来说，老生常谈的就是监控.<br>
@@ -1864,7 +1864,7 @@ number_of_replicas 1 or 0<br>
 <li>
 <p>业务有问题，监控帮助您！</p>
 <p>架构梳理图:<br>
-<img src="http://github.com/amendge/amendge.github.io/post-images/1617864679339.png" alt="" loading="lazy"></p>
+<img src="https://github.com/amendge/amendge.github.io/post-images/1617864679339.png" alt="" loading="lazy"></p>
 </li>
 </ul>
 <p>从以上图可以看出作者这边把监控分为从入口到底部的一个分层:</p>
@@ -1877,13 +1877,13 @@ number_of_replicas 1 or 0<br>
 </ul>
 <h2 id="服务监控">服务监控</h2>
 <p>针对服务器的基础监控:<br>
-<img src="http://github.com/amendge/amendge.github.io/post-images/1617864869984.png" alt="" loading="lazy"></p>
+<img src="https://github.com/amendge/amendge.github.io/post-images/1617864869984.png" alt="" loading="lazy"></p>
 <h2 id="中间件容器">中间件/容器</h2>
 <p>针对服务依赖中间件/载体：<br>
-<img src="http://github.com/amendge/amendge.github.io/post-images/1617864887255.png" alt="" loading="lazy"></p>
+<img src="https://github.com/amendge/amendge.github.io/post-images/1617864887255.png" alt="" loading="lazy"></p>
 <h2 id="k8s集群">K8S集群</h2>
 <p>当前K8S已经有很多公司使用中,对于它的监控也是至关重要<br>
-<img src="http://github.com/amendge/amendge.github.io/post-images/1617864891752.png" alt="" loading="lazy"></p>
+<img src="https://github.com/amendge/amendge.github.io/post-images/1617864891752.png" alt="" loading="lazy"></p>
 <h2 id="业务监控集成">业务监控(集成)</h2>
 <p>如果有公司使用proemtheus的可以试试在不影响服务性能的情况下继承Prometheus客户端，官方提高了不同语言的客户端</p>
 <ul>
@@ -1912,8 +1912,8 @@ number_of_replicas 1 or 0<br>
     </entry>
     <entry>
         <title type="html"><![CDATA[首序]]></title>
-        <id>http://github.com/amendge/amendge.github.io/post/welcome/</id>
-        <link href="http://github.com/amendge/amendge.github.io/post/welcome/">
+        <id>https://github.com/amendge/amendge.github.io/post/welcome/</id>
+        <link href="https://github.com/amendge/amendge.github.io/post/welcome/">
         </link>
         <updated>2019-05-14T16:00:00.000Z</updated>
         <summary type="html"><![CDATA[<p>👏 欢迎使用来到Amend的个人博客！<br>
