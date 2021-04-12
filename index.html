@@ -9,7 +9,7 @@
 <meta name="description" content="温故而知新">
 <meta name="theme-color" content="#000">
 <title>Amend</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1618209707447">
+<link rel="shortcut icon" href="/favicon.ico?v=1618212030871">
 <link rel="stylesheet" href="/media/css/mist.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -262,7 +262,7 @@
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>683<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>684<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
   </div>
@@ -978,18 +978,16 @@
           &lt;p&gt;当你的服务器被挖矿的时候你应该怎么办？或者你应该做一些什么？&lt;/p&gt;
 &lt;!-- more --&gt;
 &lt;h2 id=&#34;背景&#34;&gt;背景:&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt; 在清明节前后两台，线上某个私有集群出现的CPU使用率剧增告警，因为是业务服务器，自身的高可用和服务漂移机制也就没有引起我的重视。等到节日过完之后来才开始处理
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;原因&#34;&gt;原因&lt;/h2&gt;
+&lt;p&gt;在清明节前后两台，线上某个私有集群出现的CPU使用率剧增告警，因为是业务服务器，自身的高可用和服务漂移机制也就没有引起我的重视。等到节日过完之后来才开始处理&lt;/p&gt;
 &lt;h1 id=&#34;过程&#34;&gt;过程&lt;/h1&gt;
 &lt;h2 id=&#34;告警&#34;&gt;告警:&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt; 首先收到的是CPU占用超90%的告警，而且85%以上的占用是usr级别，当前第一反应就是要么有东西假死了，要么就是谁在乱起什么东西
-&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;首先收到的是CPU占用超90%的告警，而且85%以上的占用是usr级别，当前第一反应就是要么有东西假死了，要么就是谁在乱起什么东西&lt;/p&gt;
 &lt;h2 id=&#34;排查&#34;&gt;排查&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt; 基本上机器已经无法进入了，没办法只能通过IPMI进行重启,但是重启过后从监控观察，CPU立马彪上来,初步怀疑被挖矿了。
- 通过top命令发现没有CPU占用过高的服务，并且CPU占用总计不超过10核，但是从监控看CPU占用超40核,猜测可能被挖矿了。
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;简单查看了一下crontab发现确实多了很多无关的任务&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;基本上机器已经无法进入了，没办法只能通过IPMI进行重启,但是重启过后从监控观察，CPU立马彪上来,初步怀疑被挖矿了。&lt;/li&gt;
+&lt;li&gt;通过top命令发现没有CPU占用过高的服务，并且CPU占用总计不超过10核，但是从监控看CPU占用超40核,猜测可能被挖矿了。&lt;/li&gt;
+&lt;li&gt;简单查看了一下crontab发现确实多了很多无关的任务&lt;/li&gt;
+&lt;/ul&gt;
 &lt;pre&gt;&lt;code&gt;REDIS0009�      redis-ver5.0.5�
 redis-bits�@�ctime�k7h`used-mem�pr��
                                       aof-preamble���backup4@L
@@ -1039,7 +1037,8 @@ echo &amp;quot;ps.original \$@&amp;quot;&amp;gt;&amp;gt;/bin/ps
 &lt;p&gt;所以遇到此类的挖矿，对于系统的破坏性不大，但是较为顽固的，可以将挖矿运行脚本进行下载下来，根据脚本步骤进行反向操作就可以，但是要注意先后顺序，最好的方式是先断网，再把定时任务确认全部关闭后，再进行一定的命令，hosts等恢复&lt;/p&gt;
 &lt;h1 id=&#34;漏洞来源&#34;&gt;漏洞来源&lt;/h1&gt;
 &lt;p&gt;来源于未加密的redis可以远程使用config set，进而更改crontab列表进行任务的下发和启动。&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://xz.aliyun.com/t/256&#34;&gt;漏洞总结文章&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;👇👇传送门👇👇&lt;br&gt;
+&lt;a href=&#34;https://xz.aliyun.com/t/256&#34;&gt;漏洞总结文章&lt;/a&gt;&lt;/p&gt;
 ">【实践】服务器被挖矿之后的处理</a>
       </div>
       
