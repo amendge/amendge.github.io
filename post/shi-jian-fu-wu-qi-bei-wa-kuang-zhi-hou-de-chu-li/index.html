@@ -9,7 +9,7 @@
 <meta name="description" content="温故而知新">
 <meta name="theme-color" content="#000">
 <title>【实践】服务器被挖矿之后的处理 | Amend</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1618212479380">
+<link rel="shortcut icon" href="/favicon.ico?v=1618219698657">
 <link rel="stylesheet" href="/media/css/mist.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -39,7 +39,7 @@
 
 
   <meta name="description" content="【实践】服务器被挖矿之后的处理" />
-  <meta name="keywords" content="" />
+  <meta name="keywords" content="Linux" />
 </head>
 
 <body>
@@ -221,13 +221,13 @@
     </div>
     <div class="sidebar-item-box">
       <a href="">
-        <span class="site-item-stat-count">4</span>
+        <span class="site-item-stat-count">5</span>
         <span class="site-item-stat-name language" data-lan="category">分类</span>
       </a>
     </div>
     <div class="sidebar-item-box">
       <a href="/tags/">
-        <span class="site-item-stat-count">4</span>
+        <span class="site-item-stat-count">5</span>
         <span class="site-item-stat-name language" data-lan="tag">标签</span>
       </a>
     </div>
@@ -531,6 +531,19 @@
     </span>
     
     <span class="meta-item">
+      <i class="fa fa-folder-o"></i>
+      <span class="pc-show language" data-lan="category-in">分类于</span>
+      
+      
+      <a href="https://amendge.github.io/tag/FNu7_JVAs/">
+        <span>Linux</span>
+      </a>
+      
+      
+    </span>
+    <span class="post-meta-divider">|</span>
+    
+    <span class="meta-item">
       <i class="fa fa-clock-o"></i>
       <span>3<span class="language" data-lan="minute">分钟</span></span>
     </span>
@@ -610,7 +623,7 @@ backup2@K
 echo &quot;ps.original \$@&quot;&gt;&gt;/bin/ps
 </code></pre>
 <p>注意:很多重命名的命令是为了让你没办法查看他正在运行的程序，就无法杀掉。还有一些例如下载，重命名后按照他脚本命令进行下载运行，持续顽固运行</p>
-<p>所以遇到此类的挖矿，对于系统的破坏性不大，但是较为顽固的，可以将挖矿运行脚本进行下载下来，根据脚本步骤进行反向操作就可以，但是要注意先后顺序，最好的方式是先断网，再把定时任务确认全部关闭后，再进行一定的命令，hosts等恢复</p>
+<p><strong>所以遇到此类的挖矿，对于系统的破坏性不大，但是较为顽固的，可以将挖矿运行脚本进行下载下来，根据脚本步骤进行反向操作就可以，但是要注意先后顺序，最好的方式是先断网，再把定时任务确认全部关闭后，再进行一定的命令，hosts等恢复</strong></p>
 <h1 id="漏洞来源">漏洞来源</h1>
 <p>来源于未加密的redis可以远程使用config set，进而更改crontab列表进行任务的下发和启动。</p>
 <p>👇👇传送门👇👇<br>
@@ -635,6 +648,8 @@ echo &quot;ps.original \$@&quot;&gt;&gt;/bin/ps
     </li>
   </ul>
   <div class="tags">
+    
+      <a href="https://amendge.github.io/tag/FNu7_JVAs/"># Linux</a>
     
   </div>
   <div class="nav">
@@ -1159,7 +1174,7 @@ backup2@K
 echo &amp;quot;ps.original \$@&amp;quot;&amp;gt;&amp;gt;/bin/ps
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;注意:很多重命名的命令是为了让你没办法查看他正在运行的程序，就无法杀掉。还有一些例如下载，重命名后按照他脚本命令进行下载运行，持续顽固运行&lt;/p&gt;
-&lt;p&gt;所以遇到此类的挖矿，对于系统的破坏性不大，但是较为顽固的，可以将挖矿运行脚本进行下载下来，根据脚本步骤进行反向操作就可以，但是要注意先后顺序，最好的方式是先断网，再把定时任务确认全部关闭后，再进行一定的命令，hosts等恢复&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;所以遇到此类的挖矿，对于系统的破坏性不大，但是较为顽固的，可以将挖矿运行脚本进行下载下来，根据脚本步骤进行反向操作就可以，但是要注意先后顺序，最好的方式是先断网，再把定时任务确认全部关闭后，再进行一定的命令，hosts等恢复&lt;/strong&gt;&lt;/p&gt;
 &lt;h1 id=&#34;漏洞来源&#34;&gt;漏洞来源&lt;/h1&gt;
 &lt;p&gt;来源于未加密的redis可以远程使用config set，进而更改crontab列表进行任务的下发和启动。&lt;/p&gt;
 &lt;p&gt;👇👇传送门👇👇&lt;br&gt;
