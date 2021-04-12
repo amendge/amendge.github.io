@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://amendge.github.io</id>
     <title>Amend</title>
-    <updated>2021-04-12T07:20:34.824Z</updated>
+    <updated>2021-04-12T07:21:12.638Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://amendge.github.io"/>
     <link rel="self" href="https://amendge.github.io/atom.xml"/>
@@ -20,7 +20,7 @@
 ]]></summary>
         <content type="html"><![CDATA[<p>当你的服务器被挖矿的时候你应该怎么办？或者你应该做一些什么？</p>
 <!-- more -->
-<h2 id="背景">背景:</h2>
+<h1 id="背景">背景:</h1>
 <p>在清明节前后两台，线上某个私有集群出现的CPU使用率剧增告警，因为是业务服务器，自身的高可用和服务漂移机制也就没有引起我的重视。等到节日过完之后来才开始处理</p>
 <h1 id="过程">过程</h1>
 <h2 id="告警">告警:</h2>
