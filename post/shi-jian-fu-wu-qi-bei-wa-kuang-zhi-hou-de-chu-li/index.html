@@ -9,7 +9,7 @@
 <meta name="description" content="温故而知新">
 <meta name="theme-color" content="#000">
 <title>【实践】服务器被挖矿之后的处理 | Amend</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1624437948391">
+<link rel="shortcut icon" href="/favicon.ico?v=1624513211171">
 <link rel="stylesheet" href="/media/css/mist.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -215,7 +215,7 @@
     <div class="sidebar-item-box">
       <a href="/archives/">
         
-        <span class="site-item-stat-count">8</span>
+        <span class="site-item-stat-count">9</span>
         <span class="site-item-stat-name language" data-lan="article">文章</span>
       </a>
     </div>
@@ -654,6 +654,10 @@ echo &quot;ps.original \$@&quot;&gt;&gt;/bin/ps
   </div>
   <div class="nav">
     <div class="nav-prev">
+      
+        <i class="fa fa-chevron-left"></i>
+        <a class="nav-pc-next" title="【实践】Prometheus拉取外部集群数据" href="https://amendge.github.io/post/shi-jian-prometheus-la-qu-wai-bu-ji-qun-shu-ju/">【实践】Prometheus拉取外部集群数据</a class="nav-pc-next">
+        <a class="nav-mobile-prev" title="【实践】Prometheus拉取外部集群数据" href="https://amendge.github.io/post/shi-jian-prometheus-la-qu-wai-bu-ji-qun-shu-ju/">上一篇</a>
       
     </div>
     <div class="nav-next">
@@ -1112,6 +1116,226 @@ echo &quot;ps.original \$@&quot;&gt;&gt;/bin/ps
       <hr>
     </div>
     <div class="result" id="result">
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://amendge.github.io/post/shi-jian-prometheus-la-qu-wai-bu-ji-qun-shu-ju/"" data-c="
+          &lt;p&gt;很多时候我们需要在当前集群部署Prometheus进行监控的数据拉取和收集，当我们进行多个公有云集群，并且规模都不大的时候，我们可以进行多个公有云集群数据的统一汇集&lt;/p&gt;
+&lt;!-- more --&gt;
+&lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;
+&lt;p&gt;目前看阿里云提供的2种数据拉取，一种是基于云原生Prometheus，一种是基于Prometheus-operator做多集群的数据拉取，本集群无需部署&lt;br&gt;
+腾讯云是基于Thanos做的二次深度定制，有基于kubetnetes自动发现的深度定制hash规则，解决hash不均衡的问题，以及配置刷新后的reloader问题&lt;br&gt;
+我们说一下如何从集群A拉取集群B的监控数据：&lt;/p&gt;
+&lt;h1 id=&#34;操作&#34;&gt;操作&lt;/h1&gt;
+&lt;p&gt;&lt;em&gt;以拉取kubelet的cadvisor为例&lt;/em&gt;，如果我们想要拉取数据要么利用rbac权限从apiserver进行请求和数据返回，无形中给apiserver造成了一定的压力。&lt;/p&gt;
+&lt;h1 id=&#34;rbac的创建&#34;&gt;RBAC的创建&lt;/h1&gt;
+&lt;p&gt;首先我们需要在A-B集群部署RBAC，让我们不管在本集群还是外部集群都有权限进行数据的拉取和搜集&lt;br&gt;
+RBAC.yaml&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRole
+metadata:
+  name: prometheus
+  namespace: kube-system
+rules:
+- apiGroups: [&amp;quot;&amp;quot;]
+  resources:
+  - nodes
+  - nodes/proxy
+  - nodes/metrics
+  - nodes/metrics/cadvisor
+  - services
+  - endpoints
+  - pods
+  verbs: [&amp;quot;get&amp;quot;, &amp;quot;list&amp;quot;, &amp;quot;watch&amp;quot;]
+- apiGroups:
+  - extensions
+  resources:
+  - ingresses
+  verbs: [&amp;quot;get&amp;quot;, &amp;quot;list&amp;quot;, &amp;quot;watch&amp;quot;]
+- nonResourceURLs: [&amp;quot;/metrics&amp;quot;]
+  verbs: [&amp;quot;get&amp;quot;]
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: prometheus
+  namespace: kube-system
+---
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRoleBinding
+metadata:
+  name: prometheus
+  namespace: kube-system
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: prometheus
+subjects:
+- kind: ServiceAccount
+  name: prometheus
+  namespace: kube-system
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;注意&lt;/strong&gt;: 新增 nodes/metrics、nodes/metrics/cadvisor 相关路径的获取和搜集权限，为了绕过apiserver进行分布式拉取以及减轻apiserver的压力&lt;/p&gt;
+&lt;h1 id=&#34;rbac-token的获取&#34;&gt;RBAC token的获取&lt;/h1&gt;
+&lt;h2 id=&#34;创建好rbac的文件后可以利用命令查看保存的secret&#34;&gt;创建好rbac的文件后可以利用命令查看保存的secret：&lt;/h2&gt;
+&lt;p&gt;kubectl get sa prometheus -n kube-system -o yaml&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;apiVersion: v1
+kind: ServiceAccount
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {&amp;quot;apiVersion&amp;quot;:&amp;quot;v1&amp;quot;,&amp;quot;kind&amp;quot;:&amp;quot;ServiceAccount&amp;quot;,&amp;quot;metadata&amp;quot;:{&amp;quot;annotations&amp;quot;:{},&amp;quot;name&amp;quot;:&amp;quot;prometheus&amp;quot;,&amp;quot;namespace&amp;quot;:&amp;quot;kube-system&amp;quot;}}
+  creationTimestamp: 2020-02-19T03:56:52Z
+  name: prometheus
+  namespace: kube-system
+  resourceVersion: &amp;quot;289515514&amp;quot;
+  selfLink: /api/v1/namespaces/kube-system/serviceaccounts/prometheus
+  uid: dcc501be-52cb-11ea-97c1-246e964bd6e0
+secrets:
+- name: prometheus-token-z6hzl
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;获取tokenca证书也有如有需要也可以使用&#34;&gt;获取token(ca证书也有，如有需要也可以使用)：&lt;/h2&gt;
+&lt;p&gt;kubectl get secrets  prometheus-token-z6hzl -n kube-system  -ojsonpath=&#39;{.data.token}&#39; | base64 -d&lt;/p&gt;
+&lt;h1 id=&#34;token权限的验证&#34;&gt;token权限的验证&lt;/h1&gt;
+&lt;h2 id=&#34;物理机节点操作&#34;&gt;物理机节点操作：&lt;/h2&gt;
+&lt;p&gt;TOKEN=$(kubectl get secrets  prometheus-token-z6hzl -n kube-system  -ojsonpath=&#39;{.data.token}&#39; | base64 -d)&lt;/p&gt;
+&lt;h2 id=&#34;带bearer_token验证url&#34;&gt;带Bearer_token验证urL:&lt;/h2&gt;
+&lt;p&gt;curl -k --header &amp;quot;Authorization: Bearer $TOKEN&amp;quot;  https://任意K8S节点IP:10250/metrics/cadvisor&lt;/p&gt;
+&lt;p&gt;在得到数据格式如下时:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;container_threads{container=&amp;quot;xxx&amp;quot;,image=&amp;quot;xxxx&amp;quot;}   666
+container_threads{container=&amp;quot;xxx&amp;quot;,image=&amp;quot;xxxx&amp;quot;}   666
+container_threads{container=&amp;quot;xxx&amp;quot;,image=&amp;quot;xxxx&amp;quot;}   666
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;如出现403、401或Forbidden等字样代表权限不够，从头进行撸一遍看哪里有问题&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;更新：&lt;br&gt;
+如果 创建完成RBAC且确认相对路径没有问题的情况下，如果出现&lt;pre&gt;&lt;code&gt;Forbidden (user=system:anonymous, verb=get, resource=nodes, subresource=metrics)
+&lt;/code&gt;&lt;/pre&gt;
+可以试试绑定一个clusterrolebinding&lt;pre&gt;&lt;code&gt;kubectl create clusterrolebinding system:anonymous   --clusterrole=cluster-admin   --user=system:anonymous -n kube-system
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;主拉取集群操作&#34;&gt;主拉取集群操作&lt;/h1&gt;
+&lt;h2 id=&#34;prometheus-operator&#34;&gt;Prometheus-operator&lt;/h2&gt;
+&lt;h3 id=&#34;创建token的secret文件&#34;&gt;创建token的secret文件&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;apiVersion: v1
+kind: Secret
+metadata:
+  name: others-prometheus-token
+type: Opaque
+stringData:
+  k8s.token: |-
+eyJhbGciOiJSUzI1NiIsImtpZCI6IjZ1b3JCM0tQNnNuUmNtRTBRNllLanItc1UxWEtSbjJsSGJhNXphRUVOTmMifQ.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWdxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;创建prometheus外挂配置文件&#34;&gt;创建Prometheus外挂配置文件&lt;/h3&gt;
+&lt;p&gt;kubectl create secret generic additional-configs --from-file=prometheus-additional.yaml -n monitoring&lt;/p&gt;
+&lt;h3 id=&#34;以cadvisor为示例&#34;&gt;以cadvisor为示例&lt;/h3&gt;
+&lt;p&gt;官方示例：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    - job_name: &#39;kubernetes-cadvisor&#39;
+      kubernetes_sd_configs:
+      - role: node
+      scheme: https
+      tls_config:
+        ca_file: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+      bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token
+      relabel_configs:
+      - action: labelmap
+        regex: __meta_kubernetes_node_label_(.+)
+      - target_label: __address__
+        replacement: kubernetes.default.svc:443
+      - source_labels: [__meta_kubernetes_node_name]
+        regex: (.+)
+        target_label: __metrics_path__
+        replacement: /api/v1/nodes/${1}/proxy/metrics/cadvisor
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;修改后需要挂载的：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;- job_name: &#39;kubernetes-cadvisor-stag&#39;
+  kubernetes_sd_configs:
+  - api_server: https://apiserverIP:6443
+    role: node
+    bearer_token_file: /etc/prometheus/secrets/others-prometheus-token/k8s.token
+    tls_config:
+      insecure_skip_verify: true
+  scheme: https
+  tls_config:
+    insecure_skip_verify: true
+  bearer_token_file: /etc/prometheus/secrets/others-prometheus-token/k8s.token
+  relabel_configs:
+  - action: labelmap
+    regex: __meta_kubernetes_node_label_(.+)
+  - source_labels: [__meta_kubernetes_node_address_InternalIP]
+    regex: (.+)
+    target_label: __address__
+    replacement: ${1}:10250
+  - source_labels: [__meta_kubernetes_node_name]
+    regex: (.+)
+    target_label: __metrics_path__
+    replacement: /metrics/cadvisor
+  metric_relabel_configs:
+  - source_labels: [container]
+    regex: (.+)
+    target_label: container_name
+    replacement: $1
+    action: replace
+  - source_labels: [pod]
+    regex: (.+)
+    target_label: pod_name
+    replacement: $1
+    action: replace
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;operator-prometheus部署文件新增修改&#34;&gt;operator-Prometheus部署文件新增修改&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;新增配置
+  secrets:
+    - others-prometheus-token
+  additionalScrapeConfigs:
+    name: additional-configs
+    key: prometheus-additional.yaml
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;之后部署完成就ok了&lt;/p&gt;
+&lt;h2 id=&#34;云原生kubernetes_sd_configs&#34;&gt;云原生kubernetes_sd_configs&lt;/h2&gt;
+&lt;h3 id=&#34;云原生配置文件&#34;&gt;云原生配置文件：&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;- job_name: &#39;kubernetes-cadvisor-stag&#39;
+  kubernetes_sd_configs:
+  - api_server: https://apiserverIP:6443
+    role: node
+    bearer_token_file: /etc/prometheus/k8s.token
+    tls_config:
+      insecure_skip_verify: true
+  scheme: https
+  tls_config:
+    insecure_skip_verify: true
+  bearer_token_file: /etc/prometheus/k8s.token
+  relabel_configs:
+  - action: labelmap
+    regex: __meta_kubernetes_node_label_(.+)
+  - source_labels: [__meta_kubernetes_node_address_InternalIP]
+    regex: (.+)
+    target_label: __address__
+    replacement: ${1}:10250
+  - source_labels: [__meta_kubernetes_node_name]
+    regex: (.+)
+    target_label: __metrics_path__
+    replacement: /metrics/cadvisor
+  metric_relabel_configs:
+  - source_labels: [container]
+    regex: (.+)
+    target_label: container_name
+    replacement: $1
+    action: replace
+  - source_labels: [pod]
+    regex: (.+)
+    target_label: pod_name
+    replacement: $1
+    action: replace
+
+  k8s.token: |
+eyJhbGciOiJSUzI1NiIsImtpZCI6IndOWmlUbEU5Z2F1UVltbDZZeEg5SnhzSmRzUERfcUNmMXFXQjRRV09fX0EifQ.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJtb25pdG9yaW5nIiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9zZWNyZXQubmFtZSI6InByb21ldGhldXMtdG9rZW4teHdtZGYiLCJrdWJlcm5ldGVzLmlvL3NlcnZpY2VhY2NvdW50Lxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;部署文件&#34;&gt;部署文件&lt;/h3&gt;
+&lt;p&gt;configmap统一挂载即可&lt;/p&gt;
+&lt;h1 id=&#34;图例&#34;&gt;图例：&lt;/h1&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://amendge.github.io/post-images/1623292057865.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+">【实践】Prometheus拉取外部集群数据</a>
+      </div>
       
       <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://amendge.github.io/post/shi-jian-fu-wu-qi-bei-wa-kuang-zhi-hou-de-chu-li/"" data-c="

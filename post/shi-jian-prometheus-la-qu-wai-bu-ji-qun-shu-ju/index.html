@@ -9,7 +9,7 @@
 <meta name="description" content="温故而知新">
 <meta name="theme-color" content="#000">
 <title>【实践】Prometheus拉取外部集群数据 | Amend</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1623292851820">
+<link rel="shortcut icon" href="/favicon.ico?v=1624513211171">
 <link rel="stylesheet" href="/media/css/mist.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -564,12 +564,12 @@
     
     <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>5<span class="language" data-lan="minute">分钟</span></span>
+      <span>6<span class="language" data-lan="minute">分钟</span></span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>1018<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>1078<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
     
@@ -670,6 +670,14 @@ container_threads{container=&quot;xxx&quot;,image=&quot;xxxx&quot;}   666
 container_threads{container=&quot;xxx&quot;,image=&quot;xxxx&quot;}   666
 </code></pre>
 <p><strong>如出现403、401或Forbidden等字样代表权限不够，从头进行撸一遍看哪里有问题</strong></p>
+<ul>
+<li>更新：<br>
+如果 创建完成RBAC且确认相对路径没有问题的情况下，如果出现<pre><code>Forbidden (user=system:anonymous, verb=get, resource=nodes, subresource=metrics)
+</code></pre>
+可以试试绑定一个clusterrolebinding<pre><code>kubectl create clusterrolebinding system:anonymous   --clusterrole=cluster-admin   --user=system:anonymous -n kube-system
+</code></pre>
+</li>
+</ul>
 <h1 id="主拉取集群操作">主拉取集群操作</h1>
 <h2 id="prometheus-operator">Prometheus-operator</h2>
 <h3 id="创建token的secret文件">创建token的secret文件</h3>
@@ -1362,6 +1370,14 @@ container_threads{container=&amp;quot;xxx&amp;quot;,image=&amp;quot;xxxx&amp;quo
 container_threads{container=&amp;quot;xxx&amp;quot;,image=&amp;quot;xxxx&amp;quot;}   666
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;strong&gt;如出现403、401或Forbidden等字样代表权限不够，从头进行撸一遍看哪里有问题&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;更新：&lt;br&gt;
+如果 创建完成RBAC且确认相对路径没有问题的情况下，如果出现&lt;pre&gt;&lt;code&gt;Forbidden (user=system:anonymous, verb=get, resource=nodes, subresource=metrics)
+&lt;/code&gt;&lt;/pre&gt;
+可以试试绑定一个clusterrolebinding&lt;pre&gt;&lt;code&gt;kubectl create clusterrolebinding system:anonymous   --clusterrole=cluster-admin   --user=system:anonymous -n kube-system
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h1 id=&#34;主拉取集群操作&#34;&gt;主拉取集群操作&lt;/h1&gt;
 &lt;h2 id=&#34;prometheus-operator&#34;&gt;Prometheus-operator&lt;/h2&gt;
 &lt;h3 id=&#34;创建token的secret文件&#34;&gt;创建token的secret文件&lt;/h3&gt;
@@ -3450,7 +3466,7 @@ number_of_replicas 1 or 0&lt;br&gt;
 &lt;p&gt;&lt;a href=&#34;https://github.com/gecailong&#34;&gt;Github&lt;/a&gt;&lt;br&gt;
 &lt;a href=&#34;http://www.noalert.cn&#34;&gt;blog&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&#34;特性&#34;&gt;特性👇&lt;/h2&gt;
-&lt;p&gt;📝 从业年限4年&lt;/p&gt;
+&lt;p&gt;📝 从业年限5年&lt;/p&gt;
 &lt;p&gt;🌉 从业方向监控为主+&lt;/p&gt;
 &lt;p&gt;🏷️ 我的标签:监控、告警、运维、小帅比&lt;/p&gt;
 &lt;p&gt;📋 这里呢记录的不仅是我自身的钻研、还有很多大神们的技术积累&lt;/p&gt;
