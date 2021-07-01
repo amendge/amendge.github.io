@@ -9,7 +9,7 @@
 <meta name="description" content="温故而知新">
 <meta name="theme-color" content="#000">
 <title>Amend</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1624513211171">
+<link rel="shortcut icon" href="/favicon.ico?v=1625105233731">
 <link rel="stylesheet" href="/media/css/mist.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -197,7 +197,7 @@
     <div class="sidebar-item-box">
       <a href="/archives/">
         
-        <span class="site-item-stat-count">9</span>
+        <span class="site-item-stat-count">10</span>
         <span class="site-item-stat-name language" data-lan="article">文章</span>
       </a>
     </div>
@@ -284,6 +284,59 @@
         
         <div class="post-button text-center">
           <a class="btn language" data-lan="read-more" href="https://amendge.github.io/post/shi-jian-prometheus-la-qu-wai-bu-ji-qun-shu-ju/" rel="contents">
+            阅读全文 »
+          </a>
+        </div>
+        
+      </div>
+      
+        <footer class="post-footer">
+          <div class="post-eof"></div>
+        </footer>
+      
+    </div>
+  </article>
+
+  <article class="post-list-box  post box-shadow-wrapper">
+    <div class="article-wrapper bg-color">
+      <section class="post-header">
+  <h1 class="post-title">
+    <a class="post-title-link" href="https://amendge.github.io/post/wen-ti-elasticsearch-ji-qun-pin-fan-gc/">
+      【问题】elasticsearch集群频繁GC导致负载和节点失去响应
+    </a>
+  </h1>
+  <div class="post-meta">
+    
+    <span class="meta-item pc-show">
+      <i class="fa fa-calendar-o"></i>
+      <span class="language" data-lan="publish">发布于</span>
+      <span class="publish-time" data-t="2021-06-30 13:45:47">2021-06-30</span>
+      <span class="post-meta-divider pc-show">|</span>
+    </span>
+    
+    <span class="meta-item">
+      <i class="fa fa-clock-o"></i>
+      <span>6<span class="language" data-lan="minute">分钟</span></span>
+    </span>
+    <span class="meta-item">
+      <span class="post-meta-divider">|</span>
+      <i class="fa fa-file-word-o"></i>
+      <span>1327<span class="pc-show language" data-lan="words">字数</span></span>
+    </span>
+    
+  </div>
+</section>
+      <div class="post-body">
+        
+        
+          
+            <p>在运行线上es的时候遇到了不少的问题，目前这个是我处理时间最长，排查链路最多的了，记录下来用以分享</p>
+
+          
+        
+        
+        <div class="post-button text-center">
+          <a class="btn language" data-lan="read-more" href="https://amendge.github.io/post/wen-ti-elasticsearch-ji-qun-pin-fan-gc/" rel="contents">
             阅读全文 »
           </a>
         </div>
@@ -1076,6 +1129,110 @@
       <hr>
     </div>
     <div class="result" id="result">
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://amendge.github.io/post/wen-ti-elasticsearch-ji-qun-pin-fan-gc/"" data-c="
+          &lt;p&gt;在运行线上es的时候遇到了不少的问题，目前这个是我处理时间最长，排查链路最多的了，记录下来用以分享&lt;/p&gt;
+&lt;!-- more --&gt;
+&lt;h1 id=&#34;起因&#34;&gt;起因&lt;/h1&gt;
+&lt;p&gt;最近线上日志集群出现了一个问题，在使用过程中进行频繁的GC操作，GC时间可以达到15-30s，同时在进行GC的过程中，ELK集群节点负载、CPU均有较高的飙升，且kibana操作界面查询超时，日志显示超时等。&lt;br&gt;
+GC间隔规律固定在15min一次，高峰期时容易引发node响应mater超时，造成节点丢失。&lt;/p&gt;
+&lt;h1 id=&#34;排查过程&#34;&gt;排查过程&lt;/h1&gt;
+&lt;h2 id=&#34;1es集群监控数据排查&#34;&gt;1.es集群监控数据排查&lt;/h2&gt;
+&lt;h3 id=&#34;agc时的jvm-heap-监控数据&#34;&gt;a.gc时的JVM heap 监控数据&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://amendge.github.io/post-images/1625043608275.png&#34; alt=&#34;gc时的JVM heap&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;strong&gt;结论&lt;/strong&gt;：ES的jvm内存会有间隔的增长和降低，说明GC一直在进行垃圾的回收，且最高的利用率达84%，说明GC较为频繁&lt;/p&gt;
+&lt;h3 id=&#34;bgc时es集群的写入和搜索情况&#34;&gt;b.GC时ES集群的写入和搜索情况&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://amendge.github.io/post-images/1625043668976.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;strong&gt;结论&lt;/strong&gt;： 通过监控图可以看出在GC时写入量并没有较大的突增，相反GC会导致写入量突降，在GC结束后在进行写入，说明GC时集群压力是比较大的 ，写入收到了限制，和kibana查询超时时一致的&lt;/p&gt;
+&lt;h3 id=&#34;c新老代gc的次数和gc平均时间&#34;&gt;c.新老代GC的次数和GC平均时间&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://amendge.github.io/post-images/1625043677682.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;strong&gt;结论&lt;/strong&gt;：在频繁GC的间隔内 GC的次数和平均时间都是比较低并且在正常范围内的。&lt;/p&gt;
+&lt;h2 id=&#34;2es部署节点物理机监控数据&#34;&gt;2.es部署节点物理机监控数据&lt;/h2&gt;
+&lt;h3 id=&#34;a-节点负载和cpu情况&#34;&gt;a. 节点负载和CPU情况&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://amendge.github.io/post-images/1625044356002.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;img src=&#34;https://amendge.github.io/post-images/1625044367878.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;b节点磁盘io情况&#34;&gt;b.节点磁盘IO情况&lt;/h3&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://amendge.github.io/post-images/1625044374492.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;c节点网络io情况&#34;&gt;c.节点网络IO情况&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://amendge.github.io/post-images/1625044380169.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;strong&gt;结论&lt;/strong&gt;：&lt;br&gt;
+1.GC时磁盘IO有下降，没有数据写入&lt;br&gt;
+2.CPU/负载飙升，ES组件消耗过大，可能内部某些功能消费&lt;br&gt;
+3.网络出入IO都很高，说明写入和查询都很大&lt;/p&gt;
+&lt;h2 id=&#34;3集群的内部数据&#34;&gt;3.集群的内部数据&lt;/h2&gt;
+&lt;h3 id=&#34;1fileddata&#34;&gt;1.fileddata&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;curl &amp;quot;http://es-node:9200/_cat/fielddata&amp;quot;|grep mb
+curl  &amp;quot;http://es-node:9200/_nodes/stats/indices/fielddata?level=indices&amp;amp;fields=*&amp;quot;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;结论&lt;/strong&gt;：查看了fielddata发现总体占用很少，整个集群占用不到3G，排除它所占内存较高的可能&lt;/p&gt;
+&lt;h3 id=&#34;1segement&#34;&gt;1.segement&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;curl &amp;quot;http://node-es:9200/_cat/segments?v&amp;amp;h=index,segment,name,size&amp;quot;|grep 2021.06.28 |grep gb
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;少量示例：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;access-apiathena-2021.06.28              _1r47      1.1gb
+access-apiathena-2021.06.28              _1hx2      4.9gb
+access-apiathena-2021.06.28              _1doo      4.8gb
+access-apiathena-2021.06.28              _1lgb      1.5gb
+access-nuwa_openqa-2021.06.28            _2jgb        2gb
+access-unicorn-arc-2021.06.28            _2gb      70.7kb
+access-webapiv1_entity-2021.06.28        _afb         1gb
+access-bertcalc-2021.06.28               _lwr       4.6gb
+access-bertcalc-2021.06.28               _13kg      4.6gb
+access-bertcalc-2021.06.28               _1ilk      4.6gb
+access-bertcalc-2021.06.28               _1tmd      2.8gb
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://amendge.github.io/post-images/1625046500389.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;strong&gt;结论&lt;/strong&gt;：通过查看segement占用，发现了不少索引在各个节点占用的内存还不小，通过查看索引日志发现基本上占用较高的都是一些内部含有比较大字段的数据，通过过滤之后数量减少了很多，但是对于GC问题依旧没有改善&lt;/p&gt;
+&lt;h2 id=&#34;4集群索引模板&#34;&gt;4.集群索引模板&lt;/h2&gt;
+&lt;h3 id=&#34;1索引模板&#34;&gt;1.索引模板&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;  &amp;quot;settings&amp;quot;: {
+    &amp;quot;index&amp;quot;: {
+      &amp;quot;refresh_interval&amp;quot;: &amp;quot;30s&amp;quot;,
+      &amp;quot;number_of_shards&amp;quot;: &amp;quot;10&amp;quot;,
+      &amp;quot;translog&amp;quot;: {
+        &amp;quot;flush_threshold_size&amp;quot;: &amp;quot;1024mb&amp;quot;,
+        &amp;quot;sync_interval&amp;quot;: &amp;quot;60s&amp;quot;,
+        &amp;quot;durability&amp;quot;: &amp;quot;async&amp;quot;
+      },
+      &amp;quot;number_of_replicas&amp;quot;: &amp;quot;1&amp;quot;
+    }
+  }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;结论&lt;/strong&gt;：索引模板针对不同的索引都是做过了简单优化，副本数/分片数/刷新时间和translog的异步写入，怀疑刷新&amp;quot;flush_threshold_size&amp;quot;: &amp;quot;1024mb&amp;quot;可能存在影响，减少一半看看效果。同时针对每个分片数据不超过25GB，并没有解决GC的问题&lt;/p&gt;
+&lt;h2 id=&#34;5集群配置&#34;&gt;5.集群配置&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;threadpool.bulk.queue_size: 1000
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;结论&lt;/strong&gt;：之前为了解决429问题每个节点的bulk队列都从50放到了1000。怀疑bulk队列缓存的日志较大占用了不少的内存导致GC。去除队列之后逐步重启集群节点，发现效果并不明显&lt;/p&gt;
+&lt;h2 id=&#34;6节点数据&#34;&gt;6.节点数据&lt;/h2&gt;
+&lt;h3 id=&#34;a节点监控&#34;&gt;a.节点监控&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;curl -s &#39;172.21.120.39:9200/_cat/nodes?h=name,fm,siwm,fcm,sm,qcm,im&amp;amp;v&#39;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;少量示例:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;name                    fm    siwm    sm     qcm
+node-1 388.2mb 273.6mb 1.7gb 364.5mb
+node-2  365.7mb 326.1mb 1.8gb 301.5mb
+node-3  391.7mb 226.7mb 1.6gb      0b
+node-4   251.8mb   230mb 1.9gb 330.8mb
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;结论&lt;/strong&gt;：发现查看节点使用情况也很正常&lt;/p&gt;
+&lt;h2 id=&#34;7消费能力&#34;&gt;7.消费能力&lt;/h2&gt;
+&lt;h3 id=&#34;1自研程序&#34;&gt;1.自研程序&lt;/h3&gt;
+&lt;p&gt;更改自研程序写入的节点数由8个增加至15个，因为写入时采用轮询的方式&lt;/p&gt;
+&lt;h3 id=&#34;2logstash&#34;&gt;2.logstash&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://amendge.github.io/post-images/1625048321884.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+通过发现一些logstash的配置hosts居然都是一样的，突然想到也许是因为数据都往固定的节点写入。并且这些索引都是默认索引没有进行过分片优化。基本上都是五个分片的状态。所以写入的时候没有轮询 全部往一个节点写入。通过排查发现由22个组件索引在往1-3个节点轮询写入。&lt;br&gt;
+&lt;strong&gt;结论&lt;/strong&gt;：在以上配置中索引全往2-3个节点进行写入。造成了JVM内缓存了不少的数据同时占用了很多内存，再间隔一段时间进行垃圾回收造成GC时间过长。同时es进行内部数据同步时也造成了负载和CPU的压力&lt;/p&gt;
+&lt;p&gt;为了验证结论，修改全部索引写入节点为8个+。&lt;/p&gt;
+&lt;h1 id=&#34;修改后对比&#34;&gt;修改后对比&lt;/h1&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;2&#34;&gt;&lt;img src=&#34;https://amendge.github.io/post-images/1625048794812.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;坑爹玩意，下次谁再这么配置，腿打断！&lt;/p&gt;
+&lt;p&gt;tips:&lt;br&gt;
+原理:&lt;br&gt;
+未完。。。待续&lt;/p&gt;
+">【问题】elasticsearch集群频繁GC导致负载和节点失去响应</a>
+      </div>
       
       <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://amendge.github.io/post/shi-jian-prometheus-la-qu-wai-bu-ji-qun-shu-ju/"" data-c="

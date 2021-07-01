@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://amendge.github.io</id>
     <title>Amend</title>
-    <updated>2021-06-24T05:41:19.896Z</updated>
+    <updated>2021-07-01T02:07:17.321Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://amendge.github.io"/>
     <link rel="self" href="https://amendge.github.io/atom.xml"/>
@@ -10,6 +10,115 @@
     <logo>https://amendge.github.io/images/avatar.png</logo>
     <icon>https://amendge.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, Amend</rights>
+    <entry>
+        <title type="html"><![CDATA[【问题】elasticsearch集群频繁GC导致负载和节点失去响应]]></title>
+        <id>https://amendge.github.io/post/wen-ti-elasticsearch-ji-qun-pin-fan-gc/</id>
+        <link href="https://amendge.github.io/post/wen-ti-elasticsearch-ji-qun-pin-fan-gc/">
+        </link>
+        <updated>2021-06-30T05:45:47.000Z</updated>
+        <summary type="html"><![CDATA[<p>在运行线上es的时候遇到了不少的问题，目前这个是我处理时间最长，排查链路最多的了，记录下来用以分享</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>在运行线上es的时候遇到了不少的问题，目前这个是我处理时间最长，排查链路最多的了，记录下来用以分享</p>
+<!-- more -->
+<h1 id="起因">起因</h1>
+<p>最近线上日志集群出现了一个问题，在使用过程中进行频繁的GC操作，GC时间可以达到15-30s，同时在进行GC的过程中，ELK集群节点负载、CPU均有较高的飙升，且kibana操作界面查询超时，日志显示超时等。<br>
+GC间隔规律固定在15min一次，高峰期时容易引发node响应mater超时，造成节点丢失。</p>
+<h1 id="排查过程">排查过程</h1>
+<h2 id="1es集群监控数据排查">1.es集群监控数据排查</h2>
+<h3 id="agc时的jvm-heap-监控数据">a.gc时的JVM heap 监控数据</h3>
+<p><img src="https://amendge.github.io/post-images/1625043608275.png" alt="gc时的JVM heap" loading="lazy"><br>
+<strong>结论</strong>：ES的jvm内存会有间隔的增长和降低，说明GC一直在进行垃圾的回收，且最高的利用率达84%，说明GC较为频繁</p>
+<h3 id="bgc时es集群的写入和搜索情况">b.GC时ES集群的写入和搜索情况</h3>
+<p><img src="https://amendge.github.io/post-images/1625043668976.png" alt="" loading="lazy"><br>
+<strong>结论</strong>： 通过监控图可以看出在GC时写入量并没有较大的突增，相反GC会导致写入量突降，在GC结束后在进行写入，说明GC时集群压力是比较大的 ，写入收到了限制，和kibana查询超时时一致的</p>
+<h3 id="c新老代gc的次数和gc平均时间">c.新老代GC的次数和GC平均时间</h3>
+<p><img src="https://amendge.github.io/post-images/1625043677682.png" alt="" loading="lazy"><br>
+<strong>结论</strong>：在频繁GC的间隔内 GC的次数和平均时间都是比较低并且在正常范围内的。</p>
+<h2 id="2es部署节点物理机监控数据">2.es部署节点物理机监控数据</h2>
+<h3 id="a-节点负载和cpu情况">a. 节点负载和CPU情况</h3>
+<p><img src="https://amendge.github.io/post-images/1625044356002.png" alt="" loading="lazy"><br>
+<img src="https://amendge.github.io/post-images/1625044367878.png" alt="" loading="lazy"></p>
+<h3 id="b节点磁盘io情况">b.节点磁盘IO情况</h3>
+<figure data-type="image" tabindex="1"><img src="https://amendge.github.io/post-images/1625044374492.png" alt="" loading="lazy"></figure>
+<h3 id="c节点网络io情况">c.节点网络IO情况</h3>
+<p><img src="https://amendge.github.io/post-images/1625044380169.png" alt="" loading="lazy"><br>
+<strong>结论</strong>：<br>
+1.GC时磁盘IO有下降，没有数据写入<br>
+2.CPU/负载飙升，ES组件消耗过大，可能内部某些功能消费<br>
+3.网络出入IO都很高，说明写入和查询都很大</p>
+<h2 id="3集群的内部数据">3.集群的内部数据</h2>
+<h3 id="1fileddata">1.fileddata</h3>
+<pre><code>curl &quot;http://es-node:9200/_cat/fielddata&quot;|grep mb
+curl  &quot;http://es-node:9200/_nodes/stats/indices/fielddata?level=indices&amp;fields=*&quot;
+
+</code></pre>
+<p><strong>结论</strong>：查看了fielddata发现总体占用很少，整个集群占用不到3G，排除它所占内存较高的可能</p>
+<h3 id="1segement">1.segement</h3>
+<pre><code>curl &quot;http://node-es:9200/_cat/segments?v&amp;h=index,segment,name,size&quot;|grep 2021.06.28 |grep gb
+</code></pre>
+<p>少量示例：</p>
+<pre><code>access-apiathena-2021.06.28              _1r47      1.1gb
+access-apiathena-2021.06.28              _1hx2      4.9gb
+access-apiathena-2021.06.28              _1doo      4.8gb
+access-apiathena-2021.06.28              _1lgb      1.5gb
+access-nuwa_openqa-2021.06.28            _2jgb        2gb
+access-unicorn-arc-2021.06.28            _2gb      70.7kb
+access-webapiv1_entity-2021.06.28        _afb         1gb
+access-bertcalc-2021.06.28               _lwr       4.6gb
+access-bertcalc-2021.06.28               _13kg      4.6gb
+access-bertcalc-2021.06.28               _1ilk      4.6gb
+access-bertcalc-2021.06.28               _1tmd      2.8gb
+</code></pre>
+<p><img src="https://amendge.github.io/post-images/1625046500389.png" alt="" loading="lazy"><br>
+<strong>结论</strong>：通过查看segement占用，发现了不少索引在各个节点占用的内存还不小，通过查看索引日志发现基本上占用较高的都是一些内部含有比较大字段的数据，通过过滤之后数量减少了很多，但是对于GC问题依旧没有改善</p>
+<h2 id="4集群索引模板">4.集群索引模板</h2>
+<h3 id="1索引模板">1.索引模板</h3>
+<pre><code>  &quot;settings&quot;: {
+    &quot;index&quot;: {
+      &quot;refresh_interval&quot;: &quot;30s&quot;,
+      &quot;number_of_shards&quot;: &quot;10&quot;,
+      &quot;translog&quot;: {
+        &quot;flush_threshold_size&quot;: &quot;1024mb&quot;,
+        &quot;sync_interval&quot;: &quot;60s&quot;,
+        &quot;durability&quot;: &quot;async&quot;
+      },
+      &quot;number_of_replicas&quot;: &quot;1&quot;
+    }
+  }
+</code></pre>
+<p><strong>结论</strong>：索引模板针对不同的索引都是做过了简单优化，副本数/分片数/刷新时间和translog的异步写入，怀疑刷新&quot;flush_threshold_size&quot;: &quot;1024mb&quot;可能存在影响，减少一半看看效果。同时针对每个分片数据不超过25GB，并没有解决GC的问题</p>
+<h2 id="5集群配置">5.集群配置</h2>
+<pre><code>threadpool.bulk.queue_size: 1000
+</code></pre>
+<p><strong>结论</strong>：之前为了解决429问题每个节点的bulk队列都从50放到了1000。怀疑bulk队列缓存的日志较大占用了不少的内存导致GC。去除队列之后逐步重启集群节点，发现效果并不明显</p>
+<h2 id="6节点数据">6.节点数据</h2>
+<h3 id="a节点监控">a.节点监控</h3>
+<pre><code>curl -s '172.21.120.39:9200/_cat/nodes?h=name,fm,siwm,fcm,sm,qcm,im&amp;v'
+</code></pre>
+<p>少量示例:</p>
+<pre><code>name                    fm    siwm    sm     qcm
+node-1 388.2mb 273.6mb 1.7gb 364.5mb
+node-2  365.7mb 326.1mb 1.8gb 301.5mb
+node-3  391.7mb 226.7mb 1.6gb      0b
+node-4   251.8mb   230mb 1.9gb 330.8mb
+</code></pre>
+<p><strong>结论</strong>：发现查看节点使用情况也很正常</p>
+<h2 id="7消费能力">7.消费能力</h2>
+<h3 id="1自研程序">1.自研程序</h3>
+<p>更改自研程序写入的节点数由8个增加至15个，因为写入时采用轮询的方式</p>
+<h3 id="2logstash">2.logstash</h3>
+<p><img src="https://amendge.github.io/post-images/1625048321884.png" alt="" loading="lazy"><br>
+通过发现一些logstash的配置hosts居然都是一样的，突然想到也许是因为数据都往固定的节点写入。并且这些索引都是默认索引没有进行过分片优化。基本上都是五个分片的状态。所以写入的时候没有轮询 全部往一个节点写入。通过排查发现由22个组件索引在往1-3个节点轮询写入。<br>
+<strong>结论</strong>：在以上配置中索引全往2-3个节点进行写入。造成了JVM内缓存了不少的数据同时占用了很多内存，再间隔一段时间进行垃圾回收造成GC时间过长。同时es进行内部数据同步时也造成了负载和CPU的压力</p>
+<p>为了验证结论，修改全部索引写入节点为8个+。</p>
+<h1 id="修改后对比">修改后对比</h1>
+<figure data-type="image" tabindex="2"><img src="https://amendge.github.io/post-images/1625048794812.png" alt="" loading="lazy"></figure>
+<p>坑爹玩意，下次谁再这么配置，腿打断！</p>
+<p>tips:<br>
+原理:<br>
+未完。。。待续</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[【实践】Prometheus拉取外部集群数据]]></title>
         <id>https://amendge.github.io/post/shi-jian-prometheus-la-qu-wai-bu-ji-qun-shu-ju/</id>
